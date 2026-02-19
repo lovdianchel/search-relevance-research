@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relevance Judgment Tool — detikSearch Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+<style>
+/* ─── VARIABLES ─────────────────────────────────────────── */
+:root {
+  --blue:       #1E4FBB;
+  --blue-dark:  #163A8A;
+  --blue-light: #EEF2FB;
+  --orange:     #F5821F;
+  --orange-bg:  #FEF0E6;
+  --white:      #FFFFFF;
+  --off:        #F7F8FA;
+  --border:     #E2E8F0;
+  --muted:      #8A96A8;
+  --text:       #1A1D23;
+  --text-sec:   #4A5568;
+  --green:      #16A34A;
+  --green-bg:   #F0FDF4;
+  --red:        #DC2626;
+  --gold:       #D97706;
+  --gold-bg:    #FFFBEB;
+  --radius:     12px;
+  --shadow:     0 1px 3px rgba(0,0,0,.08), 0 4px 16px rgba(0,0,0,.06);
+  --shadow-lg:  0 4px 6px rgba(0,0,0,.07), 0 10px 40px rgba(0,0,0,.12);
+}
+
+/* ─── RESET ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--off);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ─── TOPBAR ─────────────────────────────────────────────── */
+.topbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 8px rgba(0,0,0,.06);
+}
+.logo { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; font-size: 18px; }
+.logo span:first-child { color: var(--blue); }
+.logo span:last-child { color: var(--orange); }
+.topbar-right { display: flex; align-items: center; gap: 16px; }
+.progress-pill {
+  background: var(--blue-light);
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+.btn-export {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-export:hover { background: var(--blue-dark); }
+
+/* ─── MAIN LAYOUT ────────────────────────────────────────── */
+.app { max-width: 900px; margin: 0 auto; padding: 24px 16px 80px; }
+
+/* ─── WELCOME SCREEN ─────────────────────────────────────── */
+#screen-welcome {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  text-align: center;
+  gap: 0;
+  padding: 32px 16px;
+}
+.welcome-badge {
+  background: var(--orange-bg);
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+.welcome-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 16px;
+  max-width: 600px;
+}
+.welcome-title em { color: var(--blue); font-style: italic; }
+.welcome-sub {
+  color: var(--text-sec);
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+.instructions {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 520px;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 32px;
+  box-shadow: var(--shadow);
+}
+.instructions h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 16px;
+}
+.instruction-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+.instruction-item:last-child { margin-bottom: 0; }
+.instr-num {
+  width: 24px;
+  height: 24px;
+  background: var(--blue);
+  color: white;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.instr-text { font-size: 14px; line-height: 1.5; color: var(--text-sec); }
+.instr-text strong { color: var(--text); }
+
+.rating-preview {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+.rating-preview-chip {
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Participant name input */
+.name-input-group {
+  max-width: 320px;
+  width: 100%;
+  margin-bottom: 24px;
+}
+.name-input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sec);
+  margin-bottom: 8px;
+}
+.name-input-group input {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .15s;
+  background: var(--white);
+}
+.name-input-group input:focus { border-color: var(--blue); }
+
+.btn-start {
+  background: var(--blue);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .15s;
+  box-shadow: 0 4px 16px rgba(30,79,187,.35);
+}
+.btn-start:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(30,79,187,.4);
+}
+.btn-start:disabled {
+  background: var(--muted);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+/* ─── RATING SCREEN ──────────────────────────────────────── */
+#screen-rating { display: none; }
+
+/* Progress bar */
+.progress-bar-wrap {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.progress-bar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.progress-bar-label { font-size: 13px; font-weight: 600; color: var(--text-sec); }
+.progress-bar-count { font-size: 13px; font-weight: 700; color: var(--blue); }
+.progress-bar-track {
+  height: 6px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 99px;
+  transition: width .4s ease;
+}
+.progress-keywords {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.kw-pill {
+  font-size: 11px;
+  padding: 2px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .12s;
+  white-space: nowrap;
+}
+.kw-pill.done { background: var(--green-bg); border-color: #86efac; color: var(--green); }
+.kw-pill.active { background: var(--blue); border-color: var(--blue); color: white; font-weight: 600; }
+.kw-pill:hover { border-color: var(--blue); color: var(--blue); }
+.kw-pill.done:hover { border-color: var(--green); }
+
+/* Article card */
+.article-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: box-shadow .15s, transform .1s;
+}
+.article-card:hover { box-shadow: var(--shadow-lg); }
+.article-card.rated { border-color: #93c5fd; }
+
+.card-header {
+  padding: 14px 18px 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.card-number {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  min-width: 28px;
+  padding-top: 3px;
+}
+.card-meta { flex: 1; min-width: 0; }
+.card-keyword {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.kw-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--blue-light);
+  color: var(--blue);
+}
+.algo-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.algo-tag.relevansi { background: #fef3c7; color: #92400e; }
+.algo-tag.latest    { background: #ede9fe; color: #4c1d95; }
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.card-url {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--blue);
+  text-decoration: none;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-url:hover { text-decoration: underline; }
+.card-url svg { flex-shrink: 0; }
+
+/* Rating bar at bottom */
+.card-rating {
+  padding: 10px 18px 14px 58px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.rating-label { font-size: 12px; font-weight: 600; color: var(--muted); margin-right: 4px; }
+
+.btn-rate {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .12s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.btn-rate:hover { transform: translateY(-1px); }
+.btn-rate.r1 { color: #dc2626; }
+.btn-rate.r1:hover, .btn-rate.r1.selected { background: #fef2f2; border-color: #dc2626; color: #dc2626; }
+.btn-rate.r2 { color: #ea580c; }
+.btn-rate.r2:hover, .btn-rate.r2.selected { background: #fff7ed; border-color: #ea580c; color: #ea580c; }
+.btn-rate.r3 { color: #d97706; }
+.btn-rate.r3:hover, .btn-rate.r3.selected { background: var(--gold-bg); border-color: #d97706; color: #d97706; }
+.btn-rate.r4 { color: #16a34a; }
+.btn-rate.r4:hover, .btn-rate.r4.selected { background: var(--green-bg); border-color: #16a34a; color: #16a34a; }
+.btn-rate.r5 { color: var(--blue); }
+.btn-rate.r5:hover, .btn-rate.r5.selected { background: var(--blue-light); border-color: var(--blue); color: var(--blue); }
+.btn-rate.selected { box-shadow: 0 0 0 2px currentColor; }
+
+.card-note-wrap { padding: 0 18px 12px 58px; }
+.card-note {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  resize: none;
+  color: var(--text-sec);
+  outline: none;
+  transition: border-color .15s;
+  background: var(--off);
+  height: 36px;
+  transition: height .2s, border-color .15s;
+}
+.card-note:focus { border-color: var(--blue); background: var(--white); height: 72px; }
+.card-note::placeholder { color: var(--muted); }
+
+/* Keyword section header */
+.kw-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 28px 0 12px;
+}
+.kw-section-line { flex: 1; height: 1px; background: var(--border); }
+.kw-section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+.kw-section-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 99px;
+  background: var(--blue-light);
+  color: var(--blue);
+}
+
+/* Jump navigation */
+.jump-nav {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text);
+  color: white;
+  border-radius: 99px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: var(--shadow-lg);
+  z-index: 90;
+  font-size: 13px;
+  font-weight: 600;
+  transition: opacity .2s;
+}
+.jump-nav-info { color: rgba(255,255,255,.65); }
+.btn-nav {
+  background: rgba(255,255,255,.15);
+  border: none;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 99px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  transition: background .12s;
+}
+.btn-nav:hover { background: rgba(255,255,255,.28); }
+.btn-nav.primary {
+  background: var(--orange);
+  color: white;
+}
+.btn-nav.primary:hover { background: #e0700f; }
+
+/* ─── DONE SCREEN ────────────────────────────────────────── */
+#screen-done {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  text-align: center;
+  gap: 20px;
+  padding: 32px 16px;
+}
+.done-icon {
+  width: 72px;
+  height: 72px;
+  background: var(--green-bg);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+.done-title {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+}
+.done-sub { color: var(--text-sec); font-size: 16px; line-height: 1.6; max-width: 400px; }
+.done-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.done-stat {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  min-width: 110px;
+}
+.done-stat-val { font-size: 28px; font-weight: 700; color: var(--blue); }
+.done-stat-label { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.done-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.btn-done {
+  padding: 12px 28px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  border: 2px solid;
+  transition: all .15s;
+}
+.btn-done.primary { background: var(--blue); color: white; border-color: var(--blue); }
+.btn-done.primary:hover { background: var(--blue-dark); border-color: var(--blue-dark); }
+.btn-done.secondary { background: white; color: var(--blue); border-color: var(--blue); }
+.btn-done.secondary:hover { background: var(--blue-light); }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .topbar { padding: 0 16px; }
+  .btn-rate { padding: 6px 10px; font-size: 12px; }
+  .card-rating { padding-left: 18px; }
+  .card-note-wrap { padding-left: 18px; }
+  .jump-nav { padding: 8px 14px; gap: 10px; width: calc(100% - 32px); }
+}
+
+/* ─── SYNC STATUS ────────────────────────────────────────── */
+.sync-bar {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 95;
+}
+.sync-pill {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 99px;
+  padding: 5px 14px 5px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  box-shadow: var(--shadow);
+  transition: all .2s;
+  white-space: nowrap;
+}
+.sync-pill .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.sync-pill.idle    { color: var(--muted); }
+.sync-pill.idle .dot { background: var(--muted); }
+.sync-pill.sending { color: var(--gold); border-color: #fcd34d; }
+.sync-pill.sending .dot { background: var(--gold); animation: pulse .8s infinite; }
+.sync-pill.ok      { color: var(--green); border-color: #86efac; background: var(--green-bg); }
+.sync-pill.ok .dot { background: var(--green); }
+.sync-pill.error   { color: var(--red); border-color: #fca5a5; background: #fef2f2; }
+.sync-pill.error .dot { background: var(--red); }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+/* Config banner */
+.config-banner {
+  background: var(--gold-bg);
+  border: 1px solid #fcd34d;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.config-banner.ok {
+  background: var(--green-bg);
+  border-color: #86efac;
+}
+.config-banner-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.config-banner a { color: var(--blue); }
+
+/* Sheet URL input in welcome */
+.sheet-input-group {
+  max-width: 440px;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.sheet-input-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-sec);
+  margin-bottom: 8px;
+}
+.sheet-input-group .label-sub {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-left: 6px;
+}
+.sheet-input-group input {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color .15s;
+  background: var(--white);
+  color: var(--text);
+}
+.sheet-input-group input:focus { border-color: var(--blue); }
+.sheet-input-group input.valid { border-color: var(--green); }
+.sheet-input-group .hint {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 6px;
+  line-height: 1.5;
+}
+.sheet-input-group .hint.valid-msg { color: var(--green); }
+
+/* Batch send button */
+.btn-sync-all {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background .15s;
+}
+.btn-sync-all:hover { background: #15803d; }
+.btn-sync-all:disabled { background: var(--muted); cursor: not-allowed; }
+
+/* ─── UTILS ──────────────────────────────────────────────── */
+.hidden { display: none !important; }
+.fade-in { animation: fadeIn .3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="logo"><span>detik</span><span>com</span></div>
+  <div class="topbar-right">
+    <div class="progress-pill" id="top-progress">0 / 0 dinilai</div>
+    <button class="btn-sync-all" onclick="syncAllToSheets()" id="btn-sync-all" style="display:none">☁ Simpan ke Sheets</button>
+    <button class="btn-export" onclick="exportResults()" id="btn-export" style="display:none">⬇ Ekspor CSV</button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 1: WELCOME
+════════════════════════════════════════════ -->
+<div class="app" id="screen-welcome">
+  <span class="welcome-badge">Research Tool — Search Quality Audit</span>
+  <h1 class="welcome-title">
+    Bantu kami menilai<br><em>relevansi artikel</em><br>hasil pencarian Detik
+  </h1>
+  <p class="welcome-sub">
+    Anda akan diminta menilai apakah artikel yang muncul di hasil pencarian benar-benar relevan dengan kata kunci yang dicari.
+    Penilaian Anda akan digunakan untuk memvalidasi algoritma search.
+  </p>
+
+  <div class="instructions">
+    <h3>Cara Penilaian</h3>
+    <div class="instruction-item">
+      <div class="instr-num">1</div>
+      <div class="instr-text">Lihat <strong>kata kunci pencarian</strong> dan baca judul artikel.</div>
+    </div>
+    <div class="instruction-item">
+      <div class="instr-num">2</div>
+      <div class="instr-text">Klik link untuk buka artikel jika perlu melihat isinya.</div>
+    </div>
+    <div class="instruction-item">
+      <div class="instr-num">3</div>
+      <div class="instr-text">Pilih skor relevansi:
+        <div class="rating-preview" style="margin-top:8px; flex-wrap:wrap; gap:5px;">
+          <span class="rating-preview-chip" style="background:#fef2f2;color:#dc2626;border:1px solid #fca5a5">1 — Tidak relevan</span>
+          <span class="rating-preview-chip" style="background:#fff7ed;color:#ea580c;border:1px solid #fdba74">2 — Kurang relevan</span>
+          <span class="rating-preview-chip" style="background:#fffbeb;color:#d97706;border:1px solid #fcd34d">3 — Cukup relevan</span>
+          <span class="rating-preview-chip" style="background:#f0fdf4;color:#16a34a;border:1px solid #86efac">4 — Relevan</span>
+          <span class="rating-preview-chip" style="background:#eff6ff;color:#1e4fbb;border:1px solid #93c5fd">5 — Sangat relevan</span>
+        </div>
+      </div>
+    </div>
+    <div class="instruction-item">
+      <div class="instr-num">4</div>
+      <div class="instr-text">Opsional: tulis catatan jika ada hal spesifik yang perlu dicatat.</div>
+    </div>
+    <div class="instruction-item">
+      <div class="instr-num">5</div>
+      <div class="instr-text">Di akhir, klik <strong>"Ekspor CSV"</strong> untuk mengunduh hasil penilaian Anda.</div>
+    </div>
+  </div>
+
+  <div class="name-input-group">
+    <label for="rater-name">Nama Anda (untuk identifikasi data)</label>
+    <input type="text" id="rater-name" placeholder="cth: Budi" autocomplete="off">
+  </div>
+
+  <div class="sheet-input-group">
+    <label for="sheet-url">
+      URL Google Apps Script
+      <span class="label-sub">(opsional — untuk auto-simpan ke Sheets)</span>
+    </label>
+    <input type="url" id="sheet-url"
+      placeholder="https://script.google.com/macros/s/AKfy.../exec"
+      autocomplete="off">
+    <div class="hint" id="sheet-hint">
+      Paste URL dari Apps Script setelah deploy. Jika kosong, hasil tetap bisa diunduh via CSV.
+    </div>
+  </div>
+
+  <button class="btn-start" id="btn-start" onclick="startRating()" disabled>
+    Mulai Penilaian →
+  </button>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 2: RATING
+════════════════════════════════════════════ -->
+<div class="app" id="screen-rating">
+
+  <!-- Progress bar -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-header">
+      <span class="progress-bar-label">Progress Penilaian</span>
+      <span class="progress-bar-count" id="progress-count">0 / 0</span>
+    </div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+    </div>
+    <div class="progress-keywords" id="kw-pills"></div>
+  </div>
+
+  <!-- Articles container (grouped by keyword) -->
+  <div id="articles-container"></div>
+
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN 3: DONE
+════════════════════════════════════════════ -->
+<div class="app" id="screen-done">
+  <div class="done-icon">✅</div>
+  <h2 class="done-title">Terima kasih!</h2>
+  <p class="done-sub">Semua artikel sudah dinilai. Silakan unduh hasilnya dan kirimkan ke peneliti.</p>
+  <div class="done-stats" id="done-stats"></div>
+  <div class="done-buttons">
+    <button class="btn-done primary" onclick="exportResults()">⬇ Unduh Hasil (CSV)</button>
+    <button class="btn-done secondary" onclick="exportJSON()">⬇ Unduh JSON</button>
+    <button class="btn-done secondary" onclick="backToRating()">← Kembali &amp; Edit</button>
+  </div>
+</div>
+
+<!-- Fixed bottom nav -->
+<div class="sync-bar" id="sync-bar" style="display:none">
+  <div class="sync-pill idle" id="sync-pill">
+    <span class="dot"></span>
+    <span id="sync-text">Belum tersinkron ke Sheets</span>
+  </div>
+</div>
+
+<div class="jump-nav" id="jump-nav" style="display:none">
+  <span class="jump-nav-info" id="nav-info">–</span>
+  <button class="btn-nav" onclick="prevKeyword()">← Sebelumnya</button>
+  <button class="btn-nav primary" onclick="nextKeyword()" id="btn-next">Berikutnya →</button>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// DATASET — ganti dengan data nyata hasil scraping
+// Format: { id, keyword, algo ("relevansi"|"latest"), rank, title, url }
+// ═══════════════════════════════════════════════════════════════════
+const ARTICLES = [
+  // ─── KEYWORD 1: banjir ───────────────────────────────────────
+  { id:"a001", keyword:"banjir", algo:"relevansi", rank:1, title:"Banjir Bandang Terjang Pemukiman di Garut, Ratusan Warga Mengungsi", url:"https://www.detik.com/jabar/berita/d-000001" },
+  { id:"a002", keyword:"banjir", algo:"relevansi", rank:2, title:"BNPB: Korban Banjir di Sulawesi Tengah Bertambah Jadi 12 Orang", url:"https://www.detik.com/news/berita/d-000002" },
+  { id:"a003", keyword:"banjir", algo:"relevansi", rank:3, title:"Penyebab Banjir Jakarta: Drainase Mampet dan Curah Hujan Ekstrem", url:"https://www.detik.com/properti/berita/d-000003" },
+  { id:"a004", keyword:"banjir", algo:"relevansi", rank:4, title:"Tips Selamat dari Banjir: Simpan Dokumen Penting di Tempat Aman", url:"https://www.detik.com/health/berita/d-000004" },
+  { id:"a005", keyword:"banjir", algo:"relevansi", rank:5, title:"Anies Baswedan Dicecar Soal Normalisasi Kali untuk Atasi Banjir", url:"https://www.detik.com/news/berita/d-000005" },
+  { id:"a006", keyword:"banjir", algo:"latest",    rank:1, title:"Cuaca Ekstrem Landa Jawa Barat, Waspadai Banjir dan Longsor", url:"https://www.detik.com/jabar/berita/d-000006" },
+  { id:"a007", keyword:"banjir", algo:"latest",    rank:2, title:"Hari Ini: Jalur Pantura Semarang Terputus Akibat Banjir Rob", url:"https://www.detik.com/jateng/berita/d-000007" },
+  { id:"a008", keyword:"banjir", algo:"latest",    rank:3, title:"'Banjir Pejabat' di Pilkada 2024: Banyak ASN Mundur untuk Maju", url:"https://www.detik.com/news/berita/d-000008" },
+  { id:"a009", keyword:"banjir", algo:"latest",    rank:4, title:"Banjir Dukungan untuk Artis X di Kontes Musik, Raih 2 Juta Vote", url:"https://www.detik.com/hot/berita/d-000009" },
+  { id:"a010", keyword:"banjir", algo:"latest",    rank:5, title:"Pemkot Bandung Siapkan Anggaran Rp 50 M untuk Tangani Banjir", url:"https://www.detik.com/jabar/berita/d-000010" },
+  // ─── KEYWORD 2: kpk ──────────────────────────────────────────
+  { id:"a011", keyword:"kpk", algo:"relevansi", rank:1, title:"KPK Tetapkan Tersangka Baru Kasus Korupsi Dana Bansos Kemensos", url:"https://www.detik.com/news/berita/d-000011" },
+  { id:"a012", keyword:"kpk", algo:"relevansi", rank:2, title:"Ketua KPK Firli Bahuri Mundur di Tengah Sorotan Kasus Pemerasan", url:"https://www.detik.com/news/berita/d-000012" },
+  { id:"a013", keyword:"kpk", algo:"relevansi", rank:3, title:"OTT KPK: Kepala Dinas di Sumatera Selatan Ditangkap", url:"https://www.detik.com/news/berita/d-000013" },
+  { id:"a014", keyword:"kpk", algo:"relevansi", rank:4, title:"Anggaran KPK 2025 Diusulkan Naik 20% untuk Perkuat Penyidikan", url:"https://www.detik.com/news/berita/d-000014" },
+  { id:"a015", keyword:"kpk", algo:"relevansi", rank:5, title:"Sidang Korupsi e-KTP: Eks Ketua KPK Agus Rahardjo Bersaksi", url:"https://www.detik.com/news/berita/d-000015" },
+  { id:"a016", keyword:"kpk", algo:"latest",    rank:1, title:"KPK Panggil Menteri X Terkait Kasus Gratifikasi Proyek Jalan", url:"https://www.detik.com/news/berita/d-000016" },
+  { id:"a017", keyword:"kpk", algo:"latest",    rank:2, title:"KPK Geledah Kantor Gubernur Maluku Utara", url:"https://www.detik.com/news/berita/d-000017" },
+  { id:"a018", keyword:"kpk", algo:"latest",    rank:3, title:"Kapolri Minta Polisi Dukung Penuh Kerja KPK", url:"https://www.detik.com/news/berita/d-000018" },
+  { id:"a019", keyword:"kpk", algo:"latest",    rank:4, title:"Gosip: Artis Y 'Kena KPK' karena Aset Miliaran Tak Jelas Asal Usulnya", url:"https://www.detik.com/hot/berita/d-000019" },
+  { id:"a020", keyword:"kpk", algo:"latest",    rank:5, title:"KPK Targetkan Rampungkan 50 Kasus Sebelum Akhir Tahun", url:"https://www.detik.com/news/berita/d-000020" },
+  // ─── KEYWORD 3: prabowo ──────────────────────────────────────
+  { id:"a021", keyword:"prabowo", algo:"relevansi", rank:1, title:"Prabowo Subianto Resmi Dilantik sebagai Presiden RI ke-8", url:"https://www.detik.com/news/berita/d-000021" },
+  { id:"a022", keyword:"prabowo", algo:"relevansi", rank:2, title:"Kebijakan Pertama Prabowo: Makan Bergizi Gratis Dimulai Januari 2025", url:"https://www.detik.com/news/berita/d-000022" },
+  { id:"a023", keyword:"prabowo", algo:"relevansi", rank:3, title:"Prabowo Bertemu Presiden China Xi Jinping di Beijing", url:"https://www.detik.com/news/berita/d-000023" },
+  { id:"a024", keyword:"prabowo", algo:"relevansi", rank:4, title:"Kabinet Merah Putih: Ini Daftar Menteri Pilihan Prabowo", url:"https://www.detik.com/news/berita/d-000024" },
+  { id:"a025", keyword:"prabowo", algo:"relevansi", rank:5, title:"Prabowo Naik Kuda saat Sidak ke Kalimantan", url:"https://www.detik.com/news/berita/d-000025" },
+  { id:"a026", keyword:"prabowo", algo:"latest",    rank:1, title:"Prabowo Resmikan Proyek Tol Trans Sumatera Sepanjang 100 KM", url:"https://www.detik.com/news/berita/d-000026" },
+  { id:"a027", keyword:"prabowo", algo:"latest",    rank:2, title:"Prabowo: Indonesia Tidak Akan Ikut Campur Konflik Gaza", url:"https://www.detik.com/news/berita/d-000027" },
+  { id:"a028", keyword:"prabowo", algo:"latest",    rank:3, title:"Pengamat: Prabowo Harus Jaga Independensi TNI dari Politik", url:"https://www.detik.com/news/berita/d-000028" },
+  { id:"a029", keyword:"prabowo", algo:"latest",    rank:4, title:"Tepuk Tangan Riuh saat Prabowo Pidato di Depan Ribuan TNI/Polri", url:"https://www.detik.com/news/berita/d-000029" },
+  { id:"a030", keyword:"prabowo", algo:"latest",    rank:5, title:"Fans Prabowo Rayakan Ulang Tahunnya dengan Nasi Tumpeng Raksasa", url:"https://www.detik.com/hot/berita/d-000030" },
+  // ─── KEYWORD 4: harga emas hari ini ──────────────────────────
+  { id:"a031", keyword:"harga emas hari ini", algo:"relevansi", rank:1, title:"Harga Emas Hari Ini Naik Rp 10.000 per Gram, Tembus Rp 1,28 Juta", url:"https://www.detik.com/finance/berita/d-000031" },
+  { id:"a032", keyword:"harga emas hari ini", algo:"relevansi", rank:2, title:"Update Harga Emas Antam 19 Februari 2026: Rp 1.285.000/gram", url:"https://www.detik.com/finance/berita/d-000032" },
+  { id:"a033", keyword:"harga emas hari ini", algo:"relevansi", rank:3, title:"Harga Emas Global Tertekan Penguatan Dolar AS", url:"https://www.detik.com/finance/berita/d-000033" },
+  { id:"a034", keyword:"harga emas hari ini", algo:"relevansi", rank:4, title:"Investasi Emas vs Deposito: Mana yang Lebih Menguntungkan 2026?", url:"https://www.detik.com/finance/berita/d-000034" },
+  { id:"a035", keyword:"harga emas hari ini", algo:"relevansi", rank:5, title:"Harga Emas Pegadaian Hari Ini Naik Tipis", url:"https://www.detik.com/finance/berita/d-000035" },
+  { id:"a036", keyword:"harga emas hari ini", algo:"latest",    rank:1, title:"Emas Antam Turun Rp 5.000 per Gram Pagi Ini", url:"https://www.detik.com/finance/berita/d-000036" },
+  { id:"a037", keyword:"harga emas hari ini", algo:"latest",    rank:2, title:"Harga Emas di Pasaran Dunia Melemah 0,3%", url:"https://www.detik.com/finance/berita/d-000037" },
+  { id:"a038", keyword:"harga emas hari ini", algo:"latest",    rank:3, title:"Emas Hitam: Harga Minyak Dunia Bergolak Akibat Ketegangan Timur Tengah", url:"https://www.detik.com/finance/berita/d-000038" },
+  { id:"a039", keyword:"harga emas hari ini", algo:"latest",    rank:4, title:"Harga Logam Mulia Hari Ini: Emas, Perak, Platinum", url:"https://www.detik.com/finance/berita/d-000039" },
+  { id:"a040", keyword:"harga emas hari ini", algo:"latest",    rank:5, title:"Kalkulator Emas: Berapa Gram yang Bisa Kamu Beli dengan Rp 5 Juta?", url:"https://www.detik.com/finance/berita/d-000040" },
+  // ─── KEYWORD 5: berita hari ini ──────────────────────────────
+  { id:"a041", keyword:"berita hari ini", algo:"relevansi", rank:1, title:"Gempa M 5.4 Guncang Sulawesi Utara, Tak Ada Korban Jiwa", url:"https://www.detik.com/news/berita/d-000041" },
+  { id:"a042", keyword:"berita hari ini", algo:"relevansi", rank:2, title:"Dolar AS Menguat, Rupiah Dibuka Melemah di Rp 15.890", url:"https://www.detik.com/finance/berita/d-000042" },
+  { id:"a043", keyword:"berita hari ini", algo:"relevansi", rank:3, title:"Kemenkes Temukan 3 Kasus Baru Mpox di Jakarta", url:"https://www.detik.com/health/berita/d-000043" },
+  { id:"a044", keyword:"berita hari ini", algo:"relevansi", rank:4, title:"Sidang MK Hari Ini: Sengketa Pilkada 10 Provinsi Dijadwalkan", url:"https://www.detik.com/news/berita/d-000044" },
+  { id:"a045", keyword:"berita hari ini", algo:"relevansi", rank:5, title:"Update Cuaca Hari Ini: Hujan Lebat Diprakirakan di 15 Provinsi", url:"https://www.detik.com/news/berita/d-000045" },
+  { id:"a046", keyword:"berita hari ini", algo:"latest",    rank:1, title:"Breaking: Kebakaran Gudang di Cilincing Jakarta Utara", url:"https://www.detik.com/news/berita/d-000046" },
+  { id:"a047", keyword:"berita hari ini", algo:"latest",    rank:2, title:"IHSG Dibuka Naik 0.4% Pagi Ini", url:"https://www.detik.com/finance/berita/d-000047" },
+  { id:"a048", keyword:"berita hari ini", algo:"latest",    rank:3, title:"Pengacara Artis Z Konfirmasi Kliennya Bebas dari Tuduhan", url:"https://www.detik.com/hot/berita/d-000048" },
+  { id:"a049", keyword:"berita hari ini", algo:"latest",    rank:4, title:"Ini Jadwal Siaran Langsung Bola Hari Ini di Semua Channel", url:"https://www.detik.com/sport/berita/d-000049" },
+  { id:"a050", keyword:"berita hari ini", algo:"latest",    rank:5, title:"Tim SAR Temukan Korban Kapal Tenggelam di Selat Malaka", url:"https://www.detik.com/news/berita/d-000050" },
+  // ─── KEYWORD 6: netralitas asn dalam pemilu 2024 ─────────────
+  { id:"a051", keyword:"netralitas asn dalam pemilu 2024", algo:"relevansi", rank:1, title:"Bawaslu Catat 1.200 Laporan Pelanggaran Netralitas ASN selama Pemilu 2024", url:"https://www.detik.com/news/berita/d-000051" },
+  { id:"a052", keyword:"netralitas asn dalam pemilu 2024", algo:"relevansi", rank:2, title:"Mendagri Tito: ASN yang Langgar Netralitas di Pemilu 2024 Akan Dipecat", url:"https://www.detik.com/news/berita/d-000052" },
+  { id:"a053", keyword:"netralitas asn dalam pemilu 2024", algo:"relevansi", rank:3, title:"Aturan Netralitas ASN dalam Pemilu 2024: Apa Saja yang Dilarang?", url:"https://www.detik.com/news/berita/d-000053" },
+  { id:"a054", keyword:"netralitas asn dalam pemilu 2024", algo:"relevansi", rank:4, title:"KASN Rekomendasikan Sanksi untuk 400 ASN Pelanggar Netralitas Pemilu 2024", url:"https://www.detik.com/news/berita/d-000054" },
+  { id:"a055", keyword:"netralitas asn dalam pemilu 2024", algo:"relevansi", rank:5, title:"Pakar: Netralitas ASN Kunci Suksesnya Pemilu 2024 yang Demokratis", url:"https://www.detik.com/news/berita/d-000055" },
+  { id:"a056", keyword:"netralitas asn dalam pemilu 2024", algo:"latest",    rank:1, title:"KPU Siapkan Aturan Teknis Pemilu 2029 sejak Dini", url:"https://www.detik.com/news/berita/d-000056" },
+  { id:"a057", keyword:"netralitas asn dalam pemilu 2024", algo:"latest",    rank:2, title:"Penjabat Gubernur: Saya Pastikan ASN di Daerah Saya Netral di Pilkada", url:"https://www.detik.com/news/berita/d-000057" },
+  { id:"a058", keyword:"netralitas asn dalam pemilu 2024", algo:"latest",    rank:3, title:"Pelanggaran Netralitas ASN Tinggi, Bawaslu Akan Audit Total", url:"https://www.detik.com/news/berita/d-000058" },
+  { id:"a059", keyword:"netralitas asn dalam pemilu 2024", algo:"latest",    rank:4, title:"Mantan ASN Cerita Tekanan Kampanye Terselubung dari Atasan di 2024", url:"https://www.detik.com/news/berita/d-000059" },
+  { id:"a060", keyword:"netralitas asn dalam pemilu 2024", algo:"latest",    rank:5, title:"Profil Ketua Bawaslu yang Lantang Soal Pelanggaran Pemilu", url:"https://www.detik.com/news/berita/d-000060" },
+  // ─── KEYWORD 7: rupiah ───────────────────────────────────────
+  { id:"a061", keyword:"rupiah", algo:"relevansi", rank:1, title:"Rupiah Menguat ke Rp 15.780 per Dolar AS Sore Ini", url:"https://www.detik.com/finance/berita/d-000061" },
+  { id:"a062", keyword:"rupiah", algo:"relevansi", rank:2, title:"BI Intervensi Pasar untuk Jaga Stabilitas Kurs Rupiah", url:"https://www.detik.com/finance/berita/d-000062" },
+  { id:"a063", keyword:"rupiah", algo:"relevansi", rank:3, title:"Faktor Penyebab Rupiah Melemah: Dari Fed Rate hingga Geopolitik", url:"https://www.detik.com/finance/berita/d-000063" },
+  { id:"a064", keyword:"rupiah", algo:"relevansi", rank:4, title:"Kurs Rupiah vs 10 Mata Uang Asia Hari Ini", url:"https://www.detik.com/finance/berita/d-000064" },
+  { id:"a065", keyword:"rupiah", algo:"relevansi", rank:5, title:"Ekonom Prediksi Rupiah Bisa ke Rp 15.500 Akhir 2026", url:"https://www.detik.com/finance/berita/d-000065" },
+  { id:"a066", keyword:"rupiah", algo:"latest",    rank:1, title:"Rupiah Dibuka Melemah 0.2% Pagi Ini, Pasar Wait and See", url:"https://www.detik.com/finance/berita/d-000066" },
+  { id:"a067", keyword:"rupiah", algo:"latest",    rank:2, title:"Cerita Nasabah yang Rugi Ratusan Juta karena Kurs Rupiah Anjlok", url:"https://www.detik.com/finance/berita/d-000067" },
+  { id:"a068", keyword:"rupiah", algo:"latest",    rank:3, title:"Sri Mulyani: APBN 2026 Siap Hadapi Volatilitas Rupiah", url:"https://www.detik.com/finance/berita/d-000068" },
+  { id:"a069", keyword:"rupiah", algo:"latest",    rank:4, title:"Sejarah Rupiah: Dari Masa Kolonial Sampai Era Digital", url:"https://www.detik.com/finance/berita/d-000069" },
+  { id:"a070", keyword:"rupiah", algo:"latest",    rank:5, title:"Penjual Gorengan Ini Curhat Dampak Pelemahan Rupiah ke Harga Minyak", url:"https://www.detik.com/finance/berita/d-000070" },
+  // ─── KEYWORD 8: gempa ────────────────────────────────────────
+  { id:"a071", keyword:"gempa", algo:"relevansi", rank:1, title:"Gempa M 6.1 Guncang Maluku, BMKG Pastikan Tidak Berpotensi Tsunami", url:"https://www.detik.com/news/berita/d-000071" },
+  { id:"a072", keyword:"gempa", algo:"relevansi", rank:2, title:"Update Gempa Hari Ini: 12 Gempa Terjadi dalam 24 Jam Terakhir di Indonesia", url:"https://www.detik.com/news/berita/d-000072" },
+  { id:"a073", keyword:"gempa", algo:"relevansi", rank:3, title:"Prosedur Evakuasi Gempa yang Benar: Jangan Panik, Ini yang Harus Dilakukan", url:"https://www.detik.com/health/berita/d-000073" },
+  { id:"a074", keyword:"gempa", algo:"relevansi", rank:4, title:"Rumah Tahan Gempa: Tips Membangun di Zona Rawan Seismik", url:"https://www.detik.com/properti/berita/d-000074" },
+  { id:"a075", keyword:"gempa", algo:"relevansi", rank:5, title:"Pakar: Megathrust Selatan Jawa Bisa Hasilkan Gempa M 8.9", url:"https://www.detik.com/news/berita/d-000075" },
+  { id:"a076", keyword:"gempa", algo:"latest",    rank:1, title:"Gempa M 4.5 di Jawa Barat Dirasakan Warga Bandung dan Sekitarnya", url:"https://www.detik.com/jabar/berita/d-000076" },
+  { id:"a077", keyword:"gempa", algo:"latest",    rank:2, title:"Gempa Turki 2023 Ternyata Masih Punya Dampak Aftersyock hingga Kini", url:"https://www.detik.com/news/berita/d-000077" },
+  { id:"a078", keyword:"gempa", algo:"latest",    rank:3, title:"'Gempa Politik' di DPR: Fraksi X Ancam Walk Out Jika RUU Disahkan", url:"https://www.detik.com/news/berita/d-000078" },
+  { id:"a079", keyword:"gempa", algo:"latest",    rank:4, title:"Warga Flores Masih Trauma Pasca Gempa, Butuh Bantuan Psikologis", url:"https://www.detik.com/news/berita/d-000079" },
+  { id:"a080", keyword:"gempa", algo:"latest",    rank:5, title:"Sensor Gempa Baru BMKG Ditarget Pasang di 100 Titik Rawan", url:"https://www.detik.com/news/berita/d-000080" },
+  // ─── KEYWORD 9: saham ────────────────────────────────────────
+  { id:"a081", keyword:"saham", algo:"relevansi", rank:1, title:"IHSG Ditutup Menguat 0.85%, Saham BBCA dan TLKM Jadi Penggerak", url:"https://www.detik.com/finance/berita/d-000081" },
+  { id:"a082", keyword:"saham", algo:"relevansi", rank:2, title:"Saham Apa yang Harus Dibeli Pemula? Ini 5 Rekomendasi Analis", url:"https://www.detik.com/finance/berita/d-000082" },
+  { id:"a083", keyword:"saham", algo:"relevansi", rank:3, title:"Saham Emiten Batu Bara Berguguran Imbas Kebijakan Energi Baru", url:"https://www.detik.com/finance/berita/d-000083" },
+  { id:"a084", keyword:"saham", algo:"relevansi", rank:4, title:"Cara Investasi Saham Syariah: Panduan Lengkap untuk Investor Muslim", url:"https://www.detik.com/finance/berita/d-000084" },
+  { id:"a085", keyword:"saham", algo:"relevansi", rank:5, title:"Dividen Saham BBRI 2026: Jadwal dan Besaran yang Dibagikan", url:"https://www.detik.com/finance/berita/d-000085" },
+  { id:"a086", keyword:"saham", algo:"latest",    rank:1, title:"Top 10 Saham Teraktif Sesi Pertama Hari Ini di Bursa", url:"https://www.detik.com/finance/berita/d-000086" },
+  { id:"a087", keyword:"saham", algo:"latest",    rank:2, title:"Saham Gorengan Marak Lagi, BEI Minta Investor Waspada", url:"https://www.detik.com/finance/berita/d-000087" },
+  { id:"a088", keyword:"saham", algo:"latest",    rank:3, title:"Artis W Curhat Rugi Besar Investasi Saham, 'Tertipu Rekomendasi Influencer'", url:"https://www.detik.com/hot/berita/d-000088" },
+  { id:"a089", keyword:"saham", algo:"latest",    rank:4, title:"OJK Rilis Aturan Baru soal Short Selling Saham di BEI", url:"https://www.detik.com/finance/berita/d-000089" },
+  { id:"a090", keyword:"saham", algo:"latest",    rank:5, title:"Warren Buffett Jual Saham Apple: Ini Kata Analis Indonesia", url:"https://www.detik.com/finance/berita/d-000090" },
+  // ─── KEYWORD 10: kondisi pilot susi air pada penyanderaan ────
+  { id:"a091", keyword:"kondisi pilot susi air pada penyanderaan", algo:"relevansi", rank:1, title:"Pilot Susi Air Philip Mark Mehrtens Berhasil Dibebaskan dari KKB Papua", url:"https://www.detik.com/news/berita/d-000091" },
+  { id:"a092", keyword:"kondisi pilot susi air pada penyanderaan", algo:"relevansi", rank:2, title:"Kondisi Terkini Pilot Susi Air: Masih Sehat meski Setahun Disandera KKB", url:"https://www.detik.com/news/berita/d-000092" },
+  { id:"a093", keyword:"kondisi pilot susi air pada penyanderaan", algo:"relevansi", rank:3, title:"Kronologi Penyanderaan Pilot Susi Air oleh KKB Papua", url:"https://www.detik.com/news/berita/d-000093" },
+  { id:"a094", keyword:"kondisi pilot susi air pada penyanderaan", algo:"relevansi", rank:4, title:"Susi Pudjiastuti: Saya Tidak Akan Berhenti Berjuang untuk Pilotku", url:"https://www.detik.com/news/berita/d-000094" },
+  { id:"a095", keyword:"kondisi pilot susi air pada penyanderaan", algo:"relevansi", rank:5, title:"TNI Tambah Pasukan di Papua Tengah untuk Percepat Pembebasan Pilot", url:"https://www.detik.com/news/berita/d-000095" },
+  { id:"a096", keyword:"kondisi pilot susi air pada penyanderaan", algo:"latest",    rank:1, title:"Susi Air Buka Rute Baru Bandara Toraja-Makassar Mulai Maret 2026", url:"https://www.detik.com/travel/berita/d-000096" },
+  { id:"a097", keyword:"kondisi pilot susi air pada penyanderaan", algo:"latest",    rank:2, title:"Susi Pudjiastuti Kritik Larangan Ekspor Benih Lobster Dilonggarkan", url:"https://www.detik.com/news/berita/d-000097" },
+  { id:"a098", keyword:"kondisi pilot susi air pada penyanderaan", algo:"latest",    rank:3, title:"Pilot Maskapai Garuda Tolak Rute Baru ke Daerah Konflik", url:"https://www.detik.com/news/berita/d-000098" },
+  { id:"a099", keyword:"kondisi pilot susi air pada penyanderaan", algo:"latest",    rank:4, title:"Papua: Jalan Panjang Menuju Perdamaian yang Berkelanjutan", url:"https://www.detik.com/news/berita/d-000099" },
+  { id:"a100", keyword:"kondisi pilot susi air pada penyanderaan", algo:"latest",    rank:5, title:"Harga Tiket Susi Air Rute Pedalaman Papua Naik 15%", url:"https://www.detik.com/travel/berita/d-000100" },
+];
+
+// ═══════════════════════════════════════════════════════════════════
+// APP STATE
+// ═══════════════════════════════════════════════════════════════════
+let raterName  = '';
+let sheetsUrl  = '';       // Google Apps Script URL
+let ratings    = {};       // { articleId: { score, note, timestamp, synced } }
+let keywords   = [];
+let currentKwIdx = 0;
+let syncQueue  = new Set(); // article IDs pending sync
+let isSyncing  = false;
+
+const SCORE_LABELS = {
+  1: { label: '1 — Tidak relevan',  emoji: '✗' },
+  2: { label: '2 — Kurang relevan', emoji: '⚠' },
+  3: { label: '3 — Cukup relevan',  emoji: '◑' },
+  4: { label: '4 — Relevan',        emoji: '✓' },
+  5: { label: '5 — Sangat relevan', emoji: '★' },
+};
+
+// ─── INIT ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  const nameInput  = document.getElementById('rater-name');
+  const urlInput   = document.getElementById('sheet-url');
+  const btnStart   = document.getElementById('btn-start');
+
+  function checkStart() {
+    btnStart.disabled = nameInput.value.trim().length < 2;
+  }
+
+  nameInput.addEventListener('input', checkStart);
+  nameInput.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && !btnStart.disabled) startRating();
+  });
+
+  // Validate Apps Script URL format
+  urlInput.addEventListener('input', () => {
+    const val = urlInput.value.trim();
+    const hint = document.getElementById('sheet-hint');
+    if (!val) {
+      urlInput.classList.remove('valid');
+      hint.className = 'hint';
+      hint.textContent = 'Paste URL dari Apps Script setelah deploy. Jika kosong, hasil tetap bisa diunduh via CSV.';
+    } else if (val.includes('script.google.com/macros/s/') && val.endsWith('/exec')) {
+      urlInput.classList.add('valid');
+      hint.className = 'hint valid-msg';
+      hint.textContent = '✓ URL valid — data akan otomatis dikirim ke Google Sheets saat Anda menilai.';
+    } else {
+      urlInput.classList.remove('valid');
+      hint.className = 'hint';
+      hint.style.color = 'var(--red)';
+      hint.textContent = '⚠ Format URL belum sesuai. Pastikan URL diakhiri dengan /exec';
+    }
+  });
+
+  keywords = [...new Set(ARTICLES.map(a => a.keyword))];
+
+  // Load saved state
+  const saved = localStorage.getItem('detik_rj_state_v2');
+  if (saved) {
+    try {
+      const s = JSON.parse(saved);
+      ratings   = s.ratings   || {};
+      raterName = s.raterName || '';
+      sheetsUrl = s.sheetsUrl || '';
+      if (raterName) nameInput.value = raterName;
+      if (sheetsUrl) {
+        urlInput.value = sheetsUrl;
+        urlInput.dispatchEvent(new Event('input'));
+      }
+      checkStart();
+    } catch(e) {}
+  }
+});
+
+function saveState() {
+  sheetsUrl = (document.getElementById('sheet-url')?.value || '').trim();
+  localStorage.setItem('detik_rj_state_v2', JSON.stringify({ ratings, raterName, sheetsUrl }));
+}
+
+// ─── START ─────────────────────────────────────────────────────────
+function startRating() {
+  raterName = document.getElementById('rater-name').value.trim();
+  sheetsUrl = (document.getElementById('sheet-url')?.value || '').trim();
+  if (!raterName) return;
+  saveState();
+
+  document.getElementById('screen-welcome').style.display = 'none';
+  document.getElementById('screen-rating').style.display  = 'block';
+  document.getElementById('btn-export').style.display     = 'block';
+  document.getElementById('btn-sync-all').style.display   = sheetsUrl ? 'block' : 'none';
+  document.getElementById('jump-nav').style.display       = 'flex';
+  document.getElementById('sync-bar').style.display       = sheetsUrl ? 'flex' : 'none';
+
+  buildRatingUI();
+  updateProgress();
+  updateSyncStatus('idle', 'Siap tersinkron ke Sheets');
+  scrollToKeyword(0);
+}
+
+// ─── BUILD UI ──────────────────────────────────────────────────────
+function buildRatingUI() {
+  const container = document.getElementById('articles-container');
+  const pillsWrap = document.getElementById('kw-pills');
+  container.innerHTML = '';
+  pillsWrap.innerHTML = '';
+
+  keywords.forEach((kw, kwIdx) => {
+    const pill = document.createElement('span');
+    pill.className = 'kw-pill';
+    pill.id = `pill-${kwIdx}`;
+    pill.textContent = kw.length > 28 ? kw.slice(0,26) + '…' : kw;
+    pill.title = kw;
+    pill.onclick = () => scrollToKeyword(kwIdx);
+    pillsWrap.appendChild(pill);
+
+    const kwArticles = ARTICLES.filter(a => a.keyword === kw);
+    const hdr = document.createElement('div');
+    hdr.className = 'kw-section-header';
+    hdr.id = `section-${kwIdx}`;
+    hdr.innerHTML = `
+      <div class="kw-section-line"></div>
+      <div class="kw-section-label">${kw}</div>
+      <div class="kw-section-badge">${kwArticles.length} artikel</div>
+      <div class="kw-section-line"></div>
+    `;
+    container.appendChild(hdr);
+
+    kwArticles.forEach((art, artIdx) => {
+      container.appendChild(buildCard(art, kwIdx * 100 + artIdx + 1));
+    });
+  });
+}
+
+function buildCard(art, globalNum) {
+  const existing = ratings[art.id];
+  const card = document.createElement('div');
+  card.className = 'article-card fade-in' + (existing?.score ? ' rated' : '');
+  card.id = `card-${art.id}`;
+
+  let domain = '';
+  try { domain = new URL(art.url).hostname.replace('www.',''); } catch(e) {}
+
+  // Sync indicator dot
+  const syncDot = existing?.synced
+    ? '<span title="Tersimpan di Sheets" style="color:var(--green);font-size:11px;margin-left:4px">☁✓</span>'
+    : '';
+
+  card.innerHTML = `
+    <div class="card-header">
+      <div class="card-number">#${globalNum}</div>
+      <div class="card-meta">
+        <div class="card-keyword">
+          <span class="kw-tag">${art.keyword.length > 22 ? art.keyword.slice(0,20)+'…' : art.keyword}</span>
+          <span class="algo-tag ${art.algo}">${art.algo === 'relevansi' ? 'Relevansi' : 'Terbaru'} #${art.rank}</span>
+          <span id="sync-dot-${art.id}">${syncDot}</span>
+        </div>
+        <div class="card-title">${escHtml(art.title)}</div>
+        <a class="card-url" href="${art.url}" target="_blank" rel="noopener">
+          <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+          ${domain} — Klik untuk baca
+        </a>
+      </div>
+    </div>
+    <div class="card-rating" id="rating-row-${art.id}">
+      <span class="rating-label">Relevansi:</span>
+      ${[1,2,3,4,5].map(s => `
+        <button class="btn-rate r${s}${existing?.score === s ? ' selected' : ''}"
+          onclick="rateArticle('${art.id}', ${s})"
+          title="${SCORE_LABELS[s].label}">
+          ${SCORE_LABELS[s].emoji} ${s}
+        </button>
+      `).join('')}
+    </div>
+    <div class="card-note-wrap">
+      <textarea class="card-note" id="note-${art.id}"
+        placeholder="Catatan (opsional): kenapa nilainya segini?" rows="1"
+        oninput="saveNote('${art.id}', this.value)">${existing ? escHtml(existing.note || '') : ''}</textarea>
+    </div>
+  `;
+  return card;
+}
+
+// ─── RATING ACTIONS ────────────────────────────────────────────────
+function rateArticle(id, score) {
+  const prevSynced = ratings[id]?.synced || false;
+  ratings[id] = {
+    score,
+    note: ratings[id]?.note || '',
+    timestamp: new Date().toISOString(),
+    synced: false, // mark unsynced since score changed
+  };
+  saveState();
+
+  // Update button UI
+  const row = document.getElementById(`rating-row-${id}`);
+  row.querySelectorAll('.btn-rate').forEach((btn, i) => {
+    btn.classList.toggle('selected', i + 1 === score);
+  });
+
+  document.getElementById(`card-${id}`).classList.add('rated');
+  updateProgress();
+
+  // Queue & send to Sheets
+  if (sheetsUrl) {
+    syncQueue.add(id);
+    updateSyncStatus('sending', `Mengirim...`);
+    scheduleSyncFlush();
+  }
+
+  const total = ARTICLES.length;
+  const done  = Object.values(ratings).filter(r => r.score).length;
+  if (done === total) setTimeout(showDone, 600);
+}
+
+function saveNote(id, text) {
+  if (ratings[id]) {
+    ratings[id].note = text;
+    ratings[id].synced = false; // re-sync needed
+    if (sheetsUrl) { syncQueue.add(id); scheduleSyncFlush(); }
+  } else {
+    ratings[id] = { score: null, note: text, timestamp: new Date().toISOString(), synced: false };
+  }
+  saveState();
+}
+
+// ─── GOOGLE SHEETS SYNC ────────────────────────────────────────────
+let syncTimer = null;
+function scheduleSyncFlush() {
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(flushSyncQueue, 1200); // debounce 1.2s
+}
+
+async function flushSyncQueue() {
+  if (!sheetsUrl || syncQueue.size === 0 || isSyncing) return;
+  isSyncing = true;
+
+  const ids = [...syncQueue];
+  syncQueue.clear();
+
+  const rows = ids.map(id => {
+    const art = ARTICLES.find(a => a.id === id);
+    const r   = ratings[id] || {};
+    return {
+      rater:     raterName,
+      article_id: id,
+      keyword:   art?.keyword || '',
+      algo:      art?.algo    || '',
+      rank:      art?.rank    || '',
+      title:     art?.title   || '',
+      url:       art?.url     || '',
+      score:     r.score      ?? '',
+      note:      r.note       || '',
+      timestamp: r.timestamp  || new Date().toISOString(),
+    };
+  });
+
+  try {
+    updateSyncStatus('sending', `Mengirim ${rows.length} baris...`);
+
+    // Google Apps Script requires POST with form data (no-cors mode)
+    const formData = new FormData();
+    formData.append('payload', JSON.stringify(rows));
+
+    const res = await fetch(sheetsUrl, {
+      method: 'POST',
+      body: formData,
+      mode: 'no-cors', // Apps Script doesn't need CORS for form posts
+    });
+
+    // no-cors = opaque response, we can't read status
+    // Mark as synced optimistically
+    ids.forEach(id => {
+      if (ratings[id]) ratings[id].synced = true;
+      const dot = document.getElementById(`sync-dot-${id}`);
+      if (dot) dot.innerHTML = '<span title="Tersimpan di Sheets" style="color:var(--green);font-size:11px;margin-left:4px">☁✓</span>';
+    });
+
+    saveState();
+    const total = Object.values(ratings).filter(r => r.score).length;
+    const synced = Object.values(ratings).filter(r => r.synced).length;
+    updateSyncStatus('ok', `${synced}/${total} artikel tersimpan di Sheets`);
+
+  } catch(err) {
+    // Put back to queue for retry
+    ids.forEach(id => syncQueue.add(id));
+    updateSyncStatus('error', 'Gagal kirim — cek koneksi atau URL');
+    console.error('Sync error:', err);
+  }
+
+  isSyncing = false;
+
+  // If queue grew during send, flush again
+  if (syncQueue.size > 0) scheduleSyncFlush();
+}
+
+// Send ALL rated articles (useful if some failed)
+async function syncAllToSheets() {
+  if (!sheetsUrl) return;
+  ARTICLES.forEach(art => {
+    if (ratings[art.id]?.score) {
+      ratings[art.id].synced = false;
+      syncQueue.add(art.id);
+    }
+  });
+  await flushSyncQueue();
+}
+
+function updateSyncStatus(state, text) {
+  const pill = document.getElementById('sync-pill');
+  const span = document.getElementById('sync-text');
+  if (!pill || !span) return;
+  pill.className = `sync-pill ${state}`;
+  span.textContent = text;
+}
+
+// ─── PROGRESS ──────────────────────────────────────────────────────
+function updateProgress() {
+  const total = ARTICLES.length;
+  const done  = Object.values(ratings).filter(r => r.score).length;
+  const pct   = total ? Math.round((done / total) * 100) : 0;
+
+  document.getElementById('progress-count').textContent = `${done} / ${total} artikel dinilai`;
+  document.getElementById('top-progress').textContent   = `${done} / ${total} dinilai`;
+  document.getElementById('progress-fill').style.width  = pct + '%';
+
+  keywords.forEach((kw, kwIdx) => {
+    const kwArticles = ARTICLES.filter(a => a.keyword === kw);
+    const doneInKw   = kwArticles.filter(a => ratings[a.id]?.score).length;
+    const pill = document.getElementById(`pill-${kwIdx}`);
+    if (!pill) return;
+    pill.classList.toggle('done',   doneInKw === kwArticles.length);
+    pill.classList.toggle('active', kwIdx === currentKwIdx);
+    const label = kw.length > 24 ? kw.slice(0,22)+'…' : kw;
+    pill.textContent = label + (doneInKw > 0 ? ` (${doneInKw}/${kwArticles.length})` : '');
+  });
+
+  const kwArticles = ARTICLES.filter(a => a.keyword === keywords[currentKwIdx]);
+  const doneInKw   = kwArticles.filter(a => ratings[a.id]?.score).length;
+  document.getElementById('nav-info').textContent =
+    `${currentKwIdx + 1}/${keywords.length}: ${(keywords[currentKwIdx] || '').slice(0,30)} (${doneInKw}/${kwArticles.length})`;
+  document.getElementById('btn-next').textContent =
+    currentKwIdx >= keywords.length - 1 ? 'Selesai ✓' : 'Berikutnya →';
+}
+
+// ─── NAVIGATION ────────────────────────────────────────────────────
+function scrollToKeyword(idx) {
+  currentKwIdx = Math.max(0, Math.min(idx, keywords.length - 1));
+  const target = document.getElementById(`section-${currentKwIdx}`);
+  if (target) {
+    const offset = target.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top: offset, behavior: 'smooth' });
+  }
+  updateProgress();
+}
+
+function nextKeyword() {
+  if (currentKwIdx >= keywords.length - 1) { showDone(); return; }
+  scrollToKeyword(currentKwIdx + 1);
+}
+function prevKeyword() {
+  if (currentKwIdx > 0) scrollToKeyword(currentKwIdx - 1);
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (ticking) return;
+  ticking = true;
+  requestAnimationFrame(() => {
+    keywords.forEach((_, idx) => {
+      const el = document.getElementById(`section-${idx}`);
+      if (!el) return;
+      if (el.getBoundingClientRect().top <= 120) currentKwIdx = idx;
+    });
+    updateProgress();
+    ticking = false;
+  });
+});
+
+// ─── DONE SCREEN ───────────────────────────────────────────────────
+async function showDone() {
+  // Final sync before showing done screen
+  if (sheetsUrl && syncQueue.size > 0) await flushSyncQueue();
+
+  document.getElementById('screen-rating').style.display = 'none';
+  document.getElementById('jump-nav').style.display      = 'none';
+  document.getElementById('sync-bar').style.display      = 'none';
+  const screen = document.getElementById('screen-done');
+  screen.style.display = 'flex';
+
+  const total    = ARTICLES.length;
+  const done     = Object.values(ratings).filter(r => r.score).length;
+  const synced   = Object.values(ratings).filter(r => r.synced).length;
+  const avgScore = done > 0
+    ? (Object.values(ratings).reduce((s,r) => s + (r.score||0), 0) / done).toFixed(2)
+    : '-';
+  const withNotes = Object.values(ratings).filter(r => r.note?.trim()).length;
+
+  document.getElementById('done-stats').innerHTML = `
+    <div class="done-stat"><div class="done-stat-val">${done}</div><div class="done-stat-label">Artikel dinilai</div></div>
+    <div class="done-stat"><div class="done-stat-val">${avgScore}</div><div class="done-stat-label">Rata-rata skor</div></div>
+    <div class="done-stat"><div class="done-stat-val">${withNotes}</div><div class="done-stat-label">Ada catatan</div></div>
+    ${sheetsUrl ? `<div class="done-stat"><div class="done-stat-val" style="color:var(--green)">${synced}</div><div class="done-stat-label">Tersimpan di Sheets</div></div>` : ''}
+  `;
+}
+
+function backToRating() {
+  document.getElementById('screen-done').style.display   = 'none';
+  document.getElementById('screen-rating').style.display = 'block';
+  document.getElementById('jump-nav').style.display      = 'flex';
+  if (sheetsUrl) document.getElementById('sync-bar').style.display = 'flex';
+}
+
+// ─── EXPORT ────────────────────────────────────────────────────────
+function exportResults() {
+  const rows = [
+    ['rater','article_id','keyword','algo','rank','title','url','score','note','synced_to_sheets','timestamp']
+  ];
+  ARTICLES.forEach(art => {
+    const r = ratings[art.id] || {};
+    rows.push([
+      raterName, art.id, art.keyword, art.algo, art.rank,
+      art.title, art.url,
+      r.score ?? '',
+      (r.note || '').replace(/\n/g,' '),
+      r.synced ? 'yes' : 'no',
+      r.timestamp || '',
+    ]);
+  });
+  const csv = rows.map(r =>
+    r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')
+  ).join('\n');
+  const ts = new Date().toISOString().slice(0,16).replace(/[T:]/g,'-');
+  downloadFile(`relevance_${raterName}_${ts}.csv`, csv, 'text/csv');
+}
+
+function exportJSON() {
+  const data = {
+    meta: {
+      rater: raterName,
+      exported_at: new Date().toISOString(),
+      total_articles: ARTICLES.length,
+      total_rated: Object.values(ratings).filter(r => r.score).length,
+      sheets_synced: Object.values(ratings).filter(r => r.synced).length,
+    },
+    ratings: ARTICLES.map(art => ({
+      ...art, rater: raterName,
+      score: ratings[art.id]?.score ?? null,
+      note:  ratings[art.id]?.note  ?? '',
+      synced: ratings[art.id]?.synced ?? false,
+      timestamp: ratings[art.id]?.timestamp ?? null,
+    })),
+  };
+  const ts = new Date().toISOString().slice(0,16).replace(/[T:]/g,'-');
+  downloadFile(`relevance_${raterName}_${ts}.json`, JSON.stringify(data,null,2), 'application/json');
+}
+
+function downloadFile(name, content, mime) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+  a.download = name;
+  a.click();
+}
+
+function escHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
