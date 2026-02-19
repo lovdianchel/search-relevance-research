@@ -1180,800 +1180,808 @@
     // Format: { id, keyword, algo ("relevansi"|"latest"), rank, title, url }
     // ═══════════════════════════════════════════════════════════════════
     const ARTICLES = [
-  {
-    "id": "a0001",
-    "keyword": "artikel populer tema bahasa dan sastra",
-    "algo": "relevansi",
-    "rank": 1,
-    "title": "10 Ide Usaha Paling Laris saat Ramadan, Peluang Cuan Besar",
-    "url": "https://www.detik.com/sumut/berita/d-8353673/10-ide-usaha-paling-laris-saat-ramadan-peluang-cuan-besar"
-  },
-  {
-    "id": "a0002",
-    "keyword": "artikel populer tema bahasa dan sastra",
-    "algo": "latest",
-    "rank": 1,
-    "title": "60 Ide Lomba Hari Pahlawan di Sekolah yang Seru, Menarik, dan Mengedukasi",
-    "url": "https://www.detik.com/sulsel/berita/d-8188114/60-ide-lomba-hari-pahlawan-di-sekolah-yang-seru-menarik-dan-mengedukasi"
-  },
-  {
-    "id": "a0003",
-    "keyword": "bandung",
-    "algo": "relevansi",
-    "rank": 31,
-    "title": "Pasar Literasi: Berburu Buku Original Harga Miring di Bandung",
-    "url": "https://www.detik.com/jabar/berita/d-8350868/pasar-literasi-berburu-buku-original-harga-miring-di-bandung"
-  },
-  {
-    "id": "a0004",
-    "keyword": "bandung",
-    "algo": "latest",
-    "rank": 25,
-    "title": "Merasakan Sensasi Melambung Tinggi dengan Wahana Giant Swing di Bandung, Jawa Barat",
-    "url": "https://20.detik.com/spot-wisata/20260203-260203055/merasakan-sensasi-melambung-tinggi-dengan-wahana-giant-swing-di-bandung-jawa-barat"
-  },
-  {
-    "id": "a0005",
-    "keyword": "banjir",
-    "algo": "relevansi",
-    "rank": 26,
-    "title": "'Uji Nyali' Pengendara Hadapi Banjir Jalur Ciluluk-Cijapati",
-    "url": "https://www.detik.com/jabar/berita/d-8353914/uji-nyali-pengendara-hadapi-banjir-jalur-ciluluk-cijapati"
-  },
-  {
-    "id": "a0006",
-    "keyword": "banjir",
-    "algo": "latest",
-    "rank": 33,
-    "title": "Sapuan Banjir di Babakan Madang Bikin Mobil Jadi Speedboat",
-    "url": "https://news.detik.com/berita/d-8353848/sapuan-banjir-di-babakan-madang-bikin-mobil-jadi-speedboat"
-  },
-  {
-    "id": "a0007",
-    "keyword": "banjir aceh dan sumatera 2025 detikcom",
-    "algo": "relevansi",
-    "rank": 3,
-    "title": "ISPA dan Penyakit Kulit 'Hantui' Pengungsi Banjir Aceh-Sumatera",
-    "url": "https://health.detik.com/berita-detikhealth/d-8273076/ispa-dan-penyakit-kulit-hantui-pengungsi-banjir-aceh-sumatera"
-  },
-  {
-    "id": "a0008",
-    "keyword": "banjir aceh dan sumatera 2025 detikcom",
-    "algo": "latest",
-    "rank": 7,
-    "title": "Ekonomi RI 2026 Diramal Tak Setinggi Target Purbaya",
-    "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8295047/ekonomi-ri-2026-diramal-tak-setinggi-target-purbaya"
-  },
-  {
-    "id": "a0009",
-    "keyword": "banjir jakarta",
-    "algo": "relevansi",
-    "rank": 32,
-    "title": "Video JK soal Banjir Jakarta: Yang Kena Rakyat Kecil, Orang Menteng Tidak",
-    "url": "https://20.detik.com/detikupdate/20260208-260208017/video-jk-soal-banjir-jakarta-yang-kena-rakyat-kecil-orang-menteng-tidak"
-  },
-  {
-    "id": "a0010",
-    "keyword": "banjir jakarta",
-    "algo": "latest",
-    "rank": 32,
-    "title": "Harga Bapok di 3 Provinsi Terdampak Bencana Sumatera Stabil Jelang Ramadan",
-    "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8351522/harga-bapok-di-3-provinsi-terdampak-bencana-sumatera-stabil-jelang-ramadan"
-  },
-  {
-    "id": "a0011",
-    "keyword": "banjir jakarta hari ini",
-    "algo": "relevansi",
-    "rank": 5,
-    "title": "AHY Sebut 70% Masyarakat RI Bakal Tinggal-Kerja di Kota, Ini Tantangannya",
-    "url": "https://finance.detik.com/infrastruktur/d-8354316/ahy-sebut-70-masyarakat-ri-bakal-tinggal-kerja-di-kota-ini-tantangannya"
-  },
-  {
-    "id": "a0012",
-    "keyword": "banjir jakarta hari ini",
-    "algo": "latest",
-    "rank": 12,
-    "title": "Promono: Normalisasi Ciliwung Dimulai, Pembebasan Lahannya Hampir Selesai",
-    "url": "https://news.detik.com/berita/d-8346235/promono-normalisasi-ciliwung-dimulai-pembebasan-lahannya-hampir-selesai"
-  },
-  {
-    "id": "a0013",
-    "keyword": "bencana alam",
-    "algo": "relevansi",
-    "rank": 3,
-    "title": "Andre Rosiade Puji Gerak Cepat Pertamina Tangani Bencana Sumatera",
-    "url": "https://news.detik.com/berita/d-8352459/andre-rosiade-puji-gerak-cepat-pertamina-tangani-bencana-sumatera"
-  },
-  {
-    "id": "a0014",
-    "keyword": "bencana alam",
-    "algo": "latest",
-    "rank": 1,
-    "title": "Harga Sembako Jatim Hari Ini: Elpiji, Cabai Naik, Bawang Putih Turun",
-    "url": "https://www.detik.com/jatim/bisnis/d-8354016/harga-sembako-jatim-hari-ini-elpiji-cabai-naik-bawang-putih-turun"
-  },
-  {
-    "id": "a0015",
-    "keyword": "berita terkini",
-    "algo": "relevansi",
-    "rank": 5,
-    "title": "5 Berita Terpopuler Internasional Hari Ini",
-    "url": "https://news.detik.com/internasional/d-8351636/5-berita-terpopuler-internasional-hari-ini"
-  },
-  {
-    "id": "a0016",
-    "keyword": "berita terkini",
-    "algo": "latest",
-    "rank": 5,
-    "title": "Hilang Lima Hari, Nenek 87 Tahun Ditemukan Tewas di Kawasan Konservasi Batur",
-    "url": "https://www.detik.com/bali/berita/d-8354113/hilang-lima-hari-nenek-87-tahun-ditemukan-tewas-di-kawasan-konservasi-batur"
-  },
-  {
-    "id": "a0017",
-    "keyword": "debat capres program makan siang gratis prabowo",
-    "algo": "relevansi",
-    "rank": 3,
-    "title": "Prabowo-Gibran Dilantik, Warga: Semoga Program Makan Siang Gratis Terealisasi",
-    "url": "https://www.detik.com/jatim/berita/d-7597736/prabowo-gibran-dilantik-warga-semoga-program-makan-siang-gratis-terealisasi"
-  },
-  {
-    "id": "a0018",
-    "keyword": "debat capres program makan siang gratis prabowo",
-    "algo": "latest",
-    "rank": 5,
-    "title": "Gelar Tebus Murah Sembako, Barisan RFG Tebalkan Kemenangan 02 di Sultra",
-    "url": "https://news.detik.com/pemilu/d-7180202/gelar-tebus-murah-sembako-barisan-rfg-tebalkan-kemenangan-02-di-sultra"
-  },
-  {
-    "id": "a0019",
-    "keyword": "doa nisfu syaban",
-    "algo": "relevansi",
-    "rank": 6,
-    "title": "5 Doa Nisfu Syaban Lengkap: Arab, Latin dan Artinya",
-    "url": "https://www.detik.com/sumbagsel/berita/d-8331294/5-doa-nisfu-syaban-lengkap-arab-latin-dan-artinya"
-  },
-  {
-    "id": "a0020",
-    "keyword": "doa nisfu syaban",
-    "algo": "latest",
-    "rank": 7,
-    "title": "Jelang Ramadhan, Jamaah Gelar Doa dan Yasinan di Masjid Istiqlal",
-    "url": "https://www.detik.com/hikmah/foto/d-8338035/jelang-ramadhan-jamaah-gelar-doa-dan-yasinan-di-masjid-istiqlal"
-  },
-  {
-    "id": "a0021",
-    "keyword": "gas 3 kg",
-    "algo": "relevansi",
-    "rank": 10,
-    "title": "Segini Harga Pertalite-Gas 3 Kg Jika Tanpa Subsidi",
-    "url": "https://www.detik.com/kalimantan/bisnis/d-8137627/segini-harga-pertalite-gas-3-kg-jika-tanpa-subsidi"
-  },
-  {
-    "id": "a0022",
-    "keyword": "gas 3 kg",
-    "algo": "latest",
-    "rank": 11,
-    "title": "Pertamina Apresiasi Polisi Ungkap Kasus Pengoplos Gas Bersubsidi di Babel",
-    "url": "https://www.detik.com/sumbagsel/berita/d-8345545/pertamina-apresiasi-polisi-ungkap-kasus-pengoplos-gas-bersubsidi-di-babel"
-  },
-  {
-    "id": "a0023",
-    "keyword": "gempa hari ini",
-    "algo": "relevansi",
-    "rank": 4,
-    "title": "Video: Gempa M 6,3 Guncang Afghanistan Tewaskan 20 Orang",
-    "url": "https://20.detik.com/detikupdate/20251103-251103088/video-gempa-m-6-3-guncang-afghanistan-tewaskan-20-orang"
-  },
-  {
-    "id": "a0024",
-    "keyword": "gempa hari ini",
-    "algo": "latest",
-    "rank": 5,
-    "title": "Rumah Rusak Terdampak Gempa M 6,4 di Pacitan Mulai Diperbaiki",
-    "url": "https://www.detik.com/jatim/berita/d-8351787/rumah-rusak-terdampak-gempa-m-6-4-di-pacitan-mulai-diperbaiki"
-  },
-  {
-    "id": "a0025",
-    "keyword": "harga emas hari ini",
-    "algo": "relevansi",
-    "rank": 5,
-    "title": "Harga Emas Antam Surabaya Hari Ini Turun tapi Masih Rp 2,9 Jutaan",
-    "url": "https://www.detik.com/jatim/bisnis/d-8354005/harga-emas-antam-surabaya-hari-ini-turun-tapi-masih-rp-2-9-jutaan"
-  },
-  {
-    "id": "a0026",
-    "keyword": "harga emas hari ini",
-    "algo": "latest",
-    "rank": 12,
-    "title": "Harga Emas Antam Hari Ini Masih di Bawah Rp 3 Juta/Gram",
-    "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8352336/harga-emas-antam-hari-ini-masih-di-bawah-rp-3-juta-gram"
-  },
-  {
-    "id": "a0027",
-    "keyword": "harga kacang panjang 1 kg hari ini",
-    "algo": "relevansi",
-    "rank": 1,
-    "title": "Harga Sembako Jogja Hari Ini 13 Februari 2026: Cabai Rawit Merah Naik Lagi!",
-    "url": "https://www.detik.com/jogja/bisnis/d-8354389/harga-sembako-jogja-hari-ini-13-februari-2026-cabai-rawit-merah-naik-lagi"
-  },
-  {
-    "id": "a0028",
-    "keyword": "harga kacang panjang 1 kg hari ini",
-    "algo": "latest",
-    "rank": 6,
-    "title": "Kisah Ibu Rumah Tangga Bisnis Camilan Berawal dari Ketemu Resep dalam Panci",
-    "url": "https://finance.detik.com/solusiukm/d-6909197/kisah-ibu-rumah-tangga-bisnis-camilan-berawal-dari-ketemu-resep-dalam-panci"
-  },
-  {
-    "id": "a0029",
-    "keyword": "hasil sidang isbat puasa 2025",
-    "algo": "relevansi",
-    "rank": 4,
-    "title": "Apa Perbedaan Rukyat Hilal dan Hisab dalam Menentukan Awal Ramadan?",
-    "url": "https://www.detik.com/hikmah/khazanah/d-8353553/apa-perbedaan-rukyat-hilal-dan-hisab-dalam-menentukan-awal-ramadan"
-  },
-  {
-    "id": "a0030",
-    "keyword": "hasil sidang isbat puasa 2025",
-    "algo": "latest",
-    "rank": 9,
-    "title": "Awal Puasa Ramadan 2026 di Arab Saudi dan Indonesia, Apakah Sama?",
-    "url": "https://www.detik.com/hikmah/khazanah/d-8347840/awal-puasa-ramadan-2026-di-arab-saudi-dan-indonesia-apakah-sama"
-  },
-  {
-    "id": "a0031",
-    "keyword": "indonesia gelap",
-    "algo": "relevansi",
-    "rank": 15,
-    "title": "Video: Kala Prabowo Sindir Serakahnomics hingga Demo Dibayar Koruptor",
-    "url": "https://20.detik.com/detikupdate/20250721-250721010/video-kala-prabowo-sindir-serakahnomics-hingga-demo-dibayar-koruptor"
-  },
-  {
-    "id": "a0032",
-    "keyword": "indonesia gelap",
-    "algo": "latest",
-    "rank": 16,
-    "title": "8 Teks Khutbah Jumat Akhir Bulan Syaban dan Persiapan Menyambut Ramadan 2026",
-    "url": "https://www.detik.com/jateng/berita/d-8353462/8-teks-khutbah-jumat-akhir-bulan-syaban-dan-persiapan-menyambut-ramadan-2026"
-  },
-  {
-    "id": "a0033",
-    "keyword": "iran",
-    "algo": "relevansi",
-    "rank": 31,
-    "title": "Tegang! Pesawat Pengintai AS Terbang di Dekat Iran",
-    "url": "https://news.detik.com/internasional/d-8349289/tegang-pesawat-pengintai-as-terbang-di-dekat-iran"
-  },
-  {
-    "id": "a0034",
-    "keyword": "iran",
-    "algo": "latest",
-    "rank": 26,
-    "title": "Jalan Terjal Timnas Indonesia di Piala Asia U-17 2026",
-    "url": "https://sport.detik.com/sepakbola/sepakbola-indonesia/d-8353659/jalan-terjal-timnas-indonesia-di-piala-asia-u-17-2026"
-  },
-  {
-    "id": "a0035",
-    "keyword": "jadwal",
-    "algo": "relevansi",
-    "rank": 26,
-    "title": "Jadwal Olimpiade Musim Dingin Jumat 13 Februari 2026-Perolehan Medali Terbaru",
-    "url": "https://www.detik.com/sumbagsel/berita/d-8354066/jadwal-olimpiade-musim-dingin-jumat-13-februari-2026-perolehan-medali-terbaru"
-  },
-  {
-    "id": "a0036",
-    "keyword": "jadwal",
-    "algo": "latest",
-    "rank": 33,
-    "title": "8 Hal yang Harus Diketahui Pendaftar KIP Kuliah Jalur SNBP 2026, Catat!",
-    "url": "https://www.detik.com/edu/beasiswa/d-8354049/8-hal-yang-harus-diketahui-pendaftar-kip-kuliah-jalur-snbp-2026-catat"
-  },
-  {
-    "id": "a0037",
-    "keyword": "jokowi",
-    "algo": "relevansi",
-    "rank": 25,
-    "title": "Video Eks Wakapolri Oegroseno: Laporan Jokowi Menyalahi Asas Legalitas KUHP",
-    "url": "https://20.detik.com/detikupdate/20260212-260212069/video-eks-wakapolri-oegroseno-laporan-jokowi-menyalahi-asas-legalitas-kuhp"
-  },
-  {
-    "id": "a0038",
-    "keyword": "jokowi",
-    "algo": "latest",
-    "rank": 30,
-    "title": "Bahlil Minta Inpex Mulai Produksi Blok Masela Sebelum Pilpres",
-    "url": "https://finance.detik.com/energi/d-8353074/bahlil-minta-inpex-mulai-produksi-blok-masela-sebelum-pilpres"
-  },
-  {
-    "id": "a0039",
-    "keyword": "judi online",
-    "algo": "relevansi",
-    "rank": 2,
-    "title": "Kala Sopir Taksi Online Pergoki Penumpang Mesum di Jok Belakang",
-    "url": "https://www.detik.com/jogja/berita/d-8354034/kala-sopir-taksi-online-pergoki-penumpang-mesum-di-jok-belakang"
-  },
-  {
-    "id": "a0040",
-    "keyword": "judi online",
-    "algo": "latest",
-    "rank": 25,
-    "title": "Video PPATK Ungkap RI Mampu Tekan Transaksi Judol di 2025 Kurang dari Rp 300 T",
-    "url": "https://20.detik.com/detikupdate/20260203-260203133/video-ppatk-ungkap-ri-mampu-tekan-transaksi-judol-di-2025-kurang-dari-rp-300-t"
-  },
-  {
-    "id": "a0041",
-    "keyword": "kasus penyelundupan sabu ke lapas narkotika cipinang",
-    "algo": "relevansi",
-    "rank": 8,
-    "title": "Jaringan Narkoba Dibongkar Usai Istri Selundupkan Sabu ke Lapas Mojokerto",
-    "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8285573/jaringan-narkoba-dibongkar-usai-istri-selundupkan-sabu-ke-lapas-mojokerto"
-  },
-  {
-    "id": "a0042",
-    "keyword": "kasus penyelundupan sabu ke lapas narkotika cipinang",
-    "algo": "latest",
-    "rank": 9,
-    "title": "Cerita Freddy Budiman Atur Bisnis Narkoba dan Nyabu Bareng Model di Lapas",
-    "url": "https://news.detik.com/berita/d-3264060/cerita-freddy-budiman-atur-bisnis-narkoba-dan-nyabu-bareng-model-di-lapas"
-  },
-  {
-    "id": "a0043",
-    "keyword": "kasus politik di bulan juni 2024",
-    "algo": "relevansi",
-    "rank": 6,
-    "title": "Konektivitas Jadi Salah Satu Kunci Pariwisata Indonesia Dikenal Luas",
-    "url": "https://travel.detik.com/travel-news/d-8352059/konektivitas-jadi-salah-satu-kunci-pariwisata-indonesia-dikenal-luas"
-  },
-  {
-    "id": "a0044",
-    "keyword": "kasus politik di bulan juni 2024",
-    "algo": "latest",
-    "rank": 6,
-    "title": "Profil dan Biodata Habib Rizieq Shihab",
-    "url": "https://www.detik.com/kalimantan/berita/d-8116868/profil-dan-biodata-habib-rizieq-shihab"
-  },
-  {
-    "id": "a0045",
-    "keyword": "kebakaran los angeles",
-    "algo": "relevansi",
-    "rank": 12,
-    "title": "Heboh Masjid Tetap Utuh Usai Kebakaran Los Angeles, Ternyata...",
-    "url": "https://www.detik.com/jateng/berita/d-7734038/heboh-masjid-tetap-utuh-usai-kebakaran-los-angeles-ternyata"
-  },
-  {
-    "id": "a0046",
-    "keyword": "kebakaran los angeles",
-    "algo": "latest",
-    "rank": 17,
-    "title": "2025 Jadi Tahun Terpanas Ketiga yang Pernah Tercatat",
-    "url": "https://news.detik.com/dw/d-8307408/2025-jadi-tahun-terpanas-ketiga-yang-pernah-tercatat"
-  },
-  {
-    "id": "a0047",
-    "keyword": "kecelakaan",
-    "algo": "relevansi",
-    "rank": 33,
-    "title": "Pramono Berduka Pelajar Tewas Kecelakaan di Matraman karena Jalan Berlubang",
-    "url": "https://news.detik.com/berita/d-8347968/pramono-berduka-pelajar-tewas-kecelakaan-di-matraman-karena-jalan-berlubang"
-  },
-  {
-    "id": "a0048",
-    "keyword": "kecelakaan",
-    "algo": "latest",
-    "rank": 32,
-    "title": "Warga Boyolali Dilarikan ke Puskesmas Setelah Digigit Anakan Kobra",
-    "url": "https://www.detik.com/jateng/berita/d-8353728/warga-boyolali-dilarikan-ke-puskesmas-setelah-digigit-anakan-kobra"
-  },
-  {
-    "id": "a0049",
-    "keyword": "kekerasan perempuan dan anak",
-    "algo": "relevansi",
-    "rank": 4,
-    "title": "Video Kombes Rita Wulandari Raih Awards Kategori Polisi PPA Kelompok Rentan",
-    "url": "https://20.detik.com/detikupdate/20250716-250716130/video-kombes-rita-wulandari-raih-awards-kategori-polisi-ppa-kelompok-rentan"
-  },
-  {
-    "id": "a0050",
-    "keyword": "kekerasan perempuan dan anak",
-    "algo": "latest",
-    "rank": 3,
-    "title": "Polisi Dalami Dugaan Pelecehan Fisik oleh Gus Idris",
-    "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8353176/polisi-dalami-dugaan-pelecehan-fisik-oleh-gus-idris"
-  },
-  {
-    "id": "a0051",
-    "keyword": "kekosongan gula di tahun 2015",
-    "algo": "relevansi",
-    "rank": 3,
-    "title": "Kubu Tom Lembong Dukung Terdakwa Lain di Kasus Gula Dibebaskan",
-    "url": "https://news.detik.com/berita/d-8109066/kubu-tom-lembong-dukung-terdakwa-lain-di-kasus-gula-dibebaskan"
-  },
-  {
-    "id": "a0052",
-    "keyword": "kekosongan gula di tahun 2015",
-    "algo": "latest",
-    "rank": 1,
-    "title": "100 Contoh Soal UTBK-SNBT 2023 Lengkap Kunci Jawaban dan Pembahasan",
-    "url": "https://www.detik.com/sulsel/berita/d-6730811/100-contoh-soal-utbk-snbt-2023-lengkap-kunci-jawaban-dan-pembahasan"
-  },
-  {
-    "id": "a0053",
-    "keyword": "keracunan makan bergizi gratis",
-    "algo": "relevansi",
-    "rank": 28,
-    "title": "Marak Keracunan Makan Bergizi Gratis, Prabowo Segera Panggil Kepala BGN",
-    "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8133352/marak-keracunan-makan-bergizi-gratis-prabowo-segera-panggil-kepala-bgn"
-  },
-  {
-    "id": "a0054",
-    "keyword": "keracunan makan bergizi gratis",
-    "algo": "latest",
-    "rank": 27,
-    "title": "Dinkes Sumut Uji Sampel Bahan MBG yang Diduga Bikin Murid Keracunan di Dairi",
-    "url": "https://www.detik.com/sumut/berita/d-8351956/dinkes-sumut-uji-sampel-bahan-mbg-yang-diduga-bikin-murid-keracunan-di-dairi"
-  },
-  {
-    "id": "a0055",
-    "keyword": "keracunan program makan bergizi gratis",
-    "algo": "relevansi",
-    "rank": 4,
-    "title": "Prabowo Dapat Laporan Kepala Daerah Angka Kemiskinan-Pengangguran Turun",
-    "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8354621/prabowo-dapat-laporan-kepala-daerah-angka-kemiskinan-pengangguran-turun"
-  },
-  {
-    "id": "a0056",
-    "keyword": "keracunan program makan bergizi gratis",
-    "algo": "latest",
-    "rank": 2,
-    "title": "Purbaya Sebut MBG Fondasi Pertumbuhan Ekonomi: Jangan Kebanyakan Protes!",
-    "url": "https://www.detik.com/kalimantan/berita/d-8352746/purbaya-sebut-mbg-fondasi-pertumbuhan-ekonomi-jangan-kebanyakan-protes"
-  },
-  {
-    "id": "a0057",
-    "keyword": "kisah nabi muhammad saw membangun kota madinah",
-    "algo": "relevansi",
-    "rank": 2,
-    "title": "Siapa Ahli Ibadah yang Bangkrut di Akhirat?",
-    "url": "https://www.detik.com/hikmah/kisah/d-8353489/siapa-ahli-ibadah-yang-bangkrut-di-akhirat"
-  },
-  {
-    "id": "a0058",
-    "keyword": "kisah nabi muhammad saw membangun kota madinah",
-    "algo": "latest",
-    "rank": 4,
-    "title": "Contoh Khutbat Jumat Isra Miraj 2026 Penuh Hikmah dan Perjalanan Spiritual",
-    "url": "https://www.detik.com/sumbagsel/berita/d-8305327/contoh-khutbat-jumat-isra-miraj-2026-penuh-hikmah-dan-perjalanan-spiritual"
-  },
-  {
-    "id": "a0059",
-    "keyword": "klasemen",
-    "algo": "relevansi",
-    "rank": 1,
-    "title": "Man City Pepet Arsenal di Puncak Klasemen",
-    "url": "https://www.detik.com/sumut/sepakbola/d-8354175/man-city-pepet-arsenal-di-puncak-klasemen"
-  },
-  {
-    "id": "a0060",
-    "keyword": "klasemen",
-    "algo": "latest",
-    "rank": 11,
-    "title": "Video: Liverpool-Arsenal Kompak Imbang, Chelsea Menang",
-    "url": "https://20.detik.com/detikupdate/20260118-260118007/video-liverpool-arsenal-kompak-imbang-chelsea-menang"
-  },
-  {
-    "id": "a0061",
-    "keyword": "klasemen liga inggris",
-    "algo": "relevansi",
-    "rank": 8,
-    "title": "Meme Ragam Reaksi Kocak Arsenal saat Pantau Hasil Liverpool Vs Man City",
-    "url": "https://sport.detik.com/sepakbola/foto-sepakbola/d-8348238/meme-ragam-reaksi-kocak-arsenal-saat-pantau-hasil-liverpool-vs-man-city"
-  },
-  {
-    "id": "a0062",
-    "keyword": "klasemen liga inggris",
-    "algo": "latest",
-    "rank": 12,
-    "title": "Arne Slot ke Liverpool: Terima Saja kalau Setiap Laga Wajib Menang",
-    "url": "https://sport.detik.com/sepakbola/liga-inggris/d-8352821/arne-slot-ke-liverpool-terima-saja-kalau-setiap-laga-wajib-menang"
-  },
-  {
-    "id": "a0063",
-    "keyword": "klasemen liga spanyol",
-    "algo": "relevansi",
-    "rank": 12,
-    "title": "Klasemen Liga Spanyol Usai Real Madrid Akhirnya Menang Lagi",
-    "url": "https://sport.detik.com/sepakbola/liga-spanyol/d-8259883/klasemen-liga-spanyol-usai-real-madrid-akhirnya-menang-lagi"
-  },
-  {
-    "id": "a0064",
-    "keyword": "klasemen liga spanyol",
-    "algo": "latest",
-    "rank": 9,
-    "title": "7 Laga Menang Beruntun, Madrid Belum Puas!",
-    "url": "https://sport.detik.com/sepakbola/liga-spanyol/d-8347720/7-laga-menang-beruntun-madrid-belum-puas"
-  },
-  {
-    "id": "a0065",
-    "keyword": "kondisi pilot susi air pada penyanderaan",
-    "algo": "relevansi",
-    "rank": 1,
-    "title": "KKB Penembak Pesawat Smart Air Diduga Pelaku yang Sama Gagalkan Kunker Wapres",
-    "url": "https://www.detik.com/sulsel/hukum-dan-kriminal/d-8354534/kkb-penembak-pesawat-smart-air-diduga-pelaku-yang-sama-gagalkan-kunker-wapres"
-  },
-  {
-    "id": "a0066",
-    "keyword": "kondisi pilot susi air pada penyanderaan",
-    "algo": "latest",
-    "rank": 1,
-    "title": "Kapolri Ungkap Pembebasan Pilot Susi Air Tingkatkan Kepercayaan Internasional",
-    "url": "https://www.detik.com/sulsel/berita/d-7638287/kapolri-ungkap-pembebasan-pilot-susi-air-tingkatkan-kepercayaan-internasional"
-  },
-  {
-    "id": "a0067",
-    "keyword": "lula lahfah",
-    "algo": "relevansi",
-    "rank": 30,
-    "title": "Polisi Tetap Usut Asal-usul Whip Pink Meski Kasus Kematian Lula Lahfah Disetop",
-    "url": "https://news.detik.com/berita/d-8336055/polisi-tetap-usut-asal-usul-whip-pink-meski-kasus-kematian-lula-lahfah-disetop"
-  },
-  {
-    "id": "a0068",
-    "keyword": "lula lahfah",
-    "algo": "latest",
-    "rank": 23,
-    "title": "Video Top 5: Penyelidikan Kematian Lula Disetop hingga Onad Selesai Rehab",
-    "url": "https://20.detik.com/detikupdate/20260201-260201006/video-top-5-penyelidikan-kematian-lula-disetop-hingga-onad-selesai-rehab"
-  },
-  {
-    "id": "a0069",
-    "keyword": "makan bergizi gratis",
-    "algo": "relevansi",
-    "rank": 29,
-    "title": "Korban Keracunan Bergelimpangan, Air Infus Bergelantungan",
-    "url": "https://www.detik.com/kalimantan/foto/d-8342966/korban-keracunan-bergelimpangan-air-infus-bergelantungan"
-  },
-  {
-    "id": "a0070",
-    "keyword": "makan bergizi gratis",
-    "algo": "latest",
-    "rank": 3,
-    "title": "Prabowo Akan Beri Bintang Mahaputera ke Kapolri: Kebahagiaan Bapak ke Anaknya",
-    "url": "https://news.detik.com/berita/d-8354237/prabowo-akan-beri-bintang-mahaputera-ke-kapolri-kebahagiaan-bapak-ke-anaknya"
-  },
-  {
-    "id": "a0071",
-    "keyword": "mbg",
-    "algo": "relevansi",
-    "rank": 26,
-    "title": "Prabowo Ungkap MBG RI Setara Beri Makan Warga Singapura 10 Kali Tiap Hari",
-    "url": "https://news.detik.com/berita/d-8354083/prabowo-ungkap-mbg-ri-setara-beri-makan-warga-singapura-10-kali-tiap-hari"
-  },
-  {
-    "id": "a0072",
-    "keyword": "mbg",
-    "algo": "latest",
-    "rank": 31,
-    "title": "Prabowo Ungkap MBG RI Setara Beri Makan Warga Singapura 10 Kali Tiap Hari",
-    "url": "https://news.detik.com/berita/d-8354083/prabowo-ungkap-mbg-ri-setara-beri-makan-warga-singapura-10-kali-tiap-hari"
-  },
-  {
-    "id": "a0073",
-    "keyword": "netralitas asn dalam pemilu 2024",
-    "algo": "relevansi",
-    "rank": 4,
-    "title": "KASN Dihapus, MK Perintahkan Pemerintah Bentuk Lembaga Independen Awasi ASN",
-    "url": "https://news.detik.com/berita/d-8163622/kasn-dihapus-mk-perintahkan-pemerintah-bentuk-lembaga-independen-awasi-asn"
-  },
-  {
-    "id": "a0074",
-    "keyword": "netralitas asn dalam pemilu 2024",
-    "algo": "latest",
-    "rank": 5,
-    "title": "Tiga ASN di Lombok Barat Dipecat Gegara Berpolitik hingga Pencabulan",
-    "url": "https://www.detik.com/bali/nusra/d-8023409/tiga-asn-di-lombok-barat-dipecat-gegara-berpolitik-hingga-pencabulan"
-  },
-  {
-    "id": "a0075",
-    "keyword": "pagar laut",
-    "algo": "relevansi",
-    "rank": 2,
-    "title": "Johnny Depp Sulap Rumahnya Jadi Dunia Jack Sparrow, Ada Gua Bajak Laut",
-    "url": "https://www.detik.com/properti/berita/d-8354309/johnny-depp-sulap-rumahnya-jadi-dunia-jack-sparrow-ada-gua-bajak-laut"
-  },
-  {
-    "id": "a0076",
-    "keyword": "pagar laut",
-    "algo": "latest",
-    "rank": 7,
-    "title": "Bebas-Aktif 2.0: Membaca Traktat Keamanan Baru Jakarta-Canberra",
-    "url": "https://news.detik.com/kolom/d-8343707/bebas-aktif-2-0-membaca-traktat-keamanan-baru-jakarta-canberra"
-  },
-  {
-    "id": "a0077",
-    "keyword": "paparan radiasi dari alat listrik di rumah",
-    "algo": "relevansi",
-    "rank": 2,
-    "title": "Mengenal Collagen Tripeptide dan Manfaatnya untuk Kecantikan Kulit",
-    "url": "https://health.detik.com/berita-detikhealth/d-8352990/mengenal-collagen-tripeptide-dan-manfaatnya-untuk-kecantikan-kulit"
-  },
-  {
-    "id": "a0078",
-    "keyword": "paparan radiasi dari alat listrik di rumah",
-    "algo": "latest",
-    "rank": 7,
-    "title": "7 Cara Merawat Remote Keyless Motor",
-    "url": "https://oto.detik.com/tips-and-tricks-motor/d-5757108/7-cara-merawat-remote-keyless-motor"
-  },
-  {
-    "id": "a0079",
-    "keyword": "pembebasan lahan jalan tol",
-    "algo": "relevansi",
-    "rank": 7,
-    "title": "Foto Udara Proyek Jalan Tol Jambi-Sumsel yang Ditargetkan Kelar Tahun Depan",
-    "url": "https://finance.detik.com/foto-bisnis/d-6820843/foto-udara-proyek-jalan-tol-jambi-sumsel-yang-ditargetkan-kelar-tahun-depan"
-  },
-  {
-    "id": "a0080",
-    "keyword": "pembebasan lahan jalan tol",
-    "algo": "latest",
-    "rank": 2,
-    "title": "Tinjau Tol Kapalbetung dengan AHY, Ratu Dewa: Optimis Dongkrak Ekonomi",
-    "url": "https://www.detik.com/sumbagsel/berita/d-8351457/tinjau-tol-kapalbetung-dengan-ahy-ratu-dewa-optimis-dongkrak-ekonomi"
-  },
-  {
-    "id": "a0081",
-    "keyword": "penanganan banjir dan longsor sumatera",
-    "algo": "relevansi",
-    "rank": 9,
-    "title": "Pakar IPB Jelaskan soal Kayu Gelondongan Hanyut di Longsor dan Banjir Sumatera",
-    "url": "https://travel.detik.com/travel-news/d-8242987/pakar-ipb-jelaskan-soal-kayu-gelondongan-hanyut-di-longsor-dan-banjir-sumatera"
-  },
-  {
-    "id": "a0082",
-    "keyword": "penanganan banjir dan longsor sumatera",
-    "algo": "latest",
-    "rank": 9,
-    "title": "Tanggul Darurat Dibangun, Tol Tangerang-Merak Km 50 Bisa Dilewati",
-    "url": "https://finance.detik.com/infrastruktur/d-8339408/tanggul-darurat-dibangun-tol-tangerang-merak-km-50-bisa-dilewati"
-  },
-  {
-    "id": "a0083",
-    "keyword": "pengroyokan remaja di semarang tahun 2022",
-    "algo": "relevansi",
-    "rank": 1,
-    "title": "Fakta-fakta ABG Gunungkidul Buntuti-Nyaris Perkosa Nenek di Hutan",
-    "url": "https://www.detik.com/jogja/berita/d-8353723/fakta-fakta-abg-gunungkidul-buntuti-nyaris-perkosa-nenek-di-hutan"
-  },
-  {
-    "id": "a0084",
-    "keyword": "polda metro jaya",
-    "algo": "relevansi",
-    "rank": 26,
-    "title": "Jokowi Diperiksa Polda Metro Jaya di Solo Terkait Laporannya",
-    "url": "https://www.detik.com/jateng/berita/d-8351948/jokowi-diperiksa-polda-metro-jaya-di-solo-terkait-laporannya"
-  },
-  {
-    "id": "a0085",
-    "keyword": "polda metro jaya",
-    "algo": "latest",
-    "rank": 1,
-    "title": "Video: Prabowo Didampingi Kapolri Hadiri Groundbreaking SPPG Polri",
-    "url": "https://20.detik.com/detikupdate/20260213-260213018/video-prabowo-didampingi-kapolri-hadiri-groundbreaking-sppg-polri"
-  },
-  {
-    "id": "a0086",
-    "keyword": "politik pada bulan april 2024",
-    "algo": "relevansi",
-    "rank": 7,
-    "title": "Megawati Terima Doktor HC di Riyadh Besok, Ini 13 Gelar Kehormatan Sebelumnya",
-    "url": "https://news.detik.com/berita/d-8346864/megawati-terima-doktor-hc-di-riyadh-besok-ini-13-gelar-kehormatan-sebelumnya"
-  },
-  {
-    "id": "a0087",
-    "keyword": "politik pada bulan april 2024",
-    "algo": "latest",
-    "rank": 3,
-    "title": "Kata Menteri PANRB soal Persiapan ASN Pindah ke IKN",
-    "url": "https://www.detik.com/kalimantan/ikn/d-8315283/kata-menteri-panrb-soal-persiapan-asn-pindah-ke-ikn"
-  },
-  {
-    "id": "a0088",
-    "keyword": "polwan di mojokerto bakar suami hingga tewas",
-    "algo": "relevansi",
-    "rank": 6,
-    "title": "Kesaksian Meringankan Terdakwa di Kasus Polwan Bakar Suami di Mojokerto",
-    "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-7635378/kesaksian-meringankan-terdakwa-di-kasus-polwan-bakar-suami-di-mojokerto"
-  },
-  {
-    "id": "a0089",
-    "keyword": "polwan di mojokerto bakar suami hingga tewas",
-    "algo": "latest",
-    "rank": 8,
-    "title": "Polwan Bakar Suami di Mojokerto Dijerat Pasal KDRT",
-    "url": "https://www.detik.com/bali/hukum-dan-kriminal/d-7383699/polwan-bakar-suami-di-mojokerto-dijerat-pasal-kdrt"
-  },
-  {
-    "id": "a0090",
-    "keyword": "prabowo",
-    "algo": "relevansi",
-    "rank": 3,
-    "title": "Prioritaskan Standarisasi Mutu, Kapolri Pastikan Zero Accident di SPPG Polri",
-    "url": "https://news.detik.com/berita/d-8354063/prioritaskan-standarisasi-mutu-kapolri-pastikan-zero-accident-di-sppg-polri"
-  },
-  {
-    "id": "a0091",
-    "keyword": "prabowo",
-    "algo": "latest",
-    "rank": 27,
-    "title": "Luhut: Pertumbuhan Ekonomi 5-6% Bukan Prestasi",
-    "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8354167/luhut-pertumbuhan-ekonomi-5-6-bukan-prestasi"
-  },
-  {
-    "id": "a0092",
-    "keyword": "sepak bola",
-    "algo": "relevansi",
-    "rank": 32,
-    "title": "Infografis: Trik Kontrol dan Passing Efektif untuk Sepak Bola Sarung",
-    "url": "https://health.detik.com/infografis/d-8064801/infografis-trik-kontrol-dan-passing-efektif-untuk-sepak-bola-sarung"
-  },
-  {
-    "id": "a0093",
-    "keyword": "sepak bola",
-    "algo": "latest",
-    "rank": 26,
-    "title": "Profil Abah Guru Zuhdiannor, Ulama Humanis dari Tanah Banjar",
-    "url": "https://www.detik.com/kalimantan/budaya/d-8353744/profil-abah-guru-zuhdiannor-ulama-humanis-dari-tanah-banjar"
-  },
-  {
-    "id": "a0094",
-    "keyword": "sidang isbat puasa 2025",
-    "algo": "relevansi",
-    "rank": 3,
-    "title": "Puasa 2026 Pemerintah Tanggal Berapa? Ini Jadwal Sidang Isbat",
-    "url": "https://news.detik.com/berita/d-8349518/puasa-2026-pemerintah-tanggal-berapa-ini-jadwal-sidang-isbat"
-  },
-  {
-    "id": "a0095",
-    "keyword": "sidang isbat puasa 2025",
-    "algo": "latest",
-    "rank": 6,
-    "title": "Puasa Muhammadiyah 2026 Mulai Kapan? Cek Jadwal dan Prediksi Lebaran di Sini!",
-    "url": "https://www.detik.com/sulsel/berita/d-8348258/puasa-muhammadiyah-2026-mulai-kapan-cek-jadwal-dan-prediksi-lebaran-di-sini"
-  },
-  {
-    "id": "a0096",
-    "keyword": "sumber faktor penyumbang jejak karbon",
-    "algo": "relevansi",
-    "rank": 2,
-    "title": "Hutan dan Laut dalam Rantai Biomassa, Siapa yang Diuntungkan?",
-    "url": "https://www.detik.com/jabar/berita/d-8347519/hutan-dan-laut-dalam-rantai-biomassa-siapa-yang-diuntungkan"
-  },
-  {
-    "id": "a0097",
-    "keyword": "sumber faktor penyumbang jejak karbon",
-    "algo": "latest",
-    "rank": 3,
-    "title": "Pengertian Jejak Karbon Beserta Penyebab dan Contohnya",
-    "url": "https://www.detik.com/jateng/berita/d-7558218/pengertian-jejak-karbon-beserta-penyebab-dan-contohnya"
-  },
-  {
-    "id": "a0098",
-    "keyword": "trump",
-    "algo": "relevansi",
-    "rank": 26,
-    "title": "Trump Ngotot Lanjutkan Negosiasi AS dengan Iran, Netanyahu Ragu Berhasil",
-    "url": "https://news.detik.com/internasional/d-8353785/trump-ngotot-lanjutkan-negosiasi-as-dengan-iran-netanyahu-ragu-berhasil"
-  },
-  {
-    "id": "a0099",
-    "keyword": "trump",
-    "algo": "latest",
-    "rank": 33,
-    "title": "Minat Warga Eropa ke AS Turun, Kini Pilih ke UEA dan Asia",
-    "url": "https://travel.detik.com/travel-news/d-8353834/minat-warga-eropa-ke-as-turun-kini-pilih-ke-uea-dan-asia"
-  }
-]
-;
+      {
+        "id": "a0001",
+        "keyword": "artikel populer tema bahasa dan sastra",
+        "algo": "relevansi",
+        "rank": 1,
+        "title": "10 Ide Usaha Paling Laris saat Ramadan, Peluang Cuan Besar",
+        "url": "https://www.detik.com/sumut/berita/d-8353673/10-ide-usaha-paling-laris-saat-ramadan-peluang-cuan-besar"
+      },
+      {
+        "id": "a0002",
+        "keyword": "artikel populer tema bahasa dan sastra",
+        "algo": "latest",
+        "rank": 1,
+        "title": "60 Ide Lomba Hari Pahlawan di Sekolah yang Seru, Menarik, dan Mengedukasi",
+        "url": "https://www.detik.com/sulsel/berita/d-8188114/60-ide-lomba-hari-pahlawan-di-sekolah-yang-seru-menarik-dan-mengedukasi"
+      },
+      {
+        "id": "a0003",
+        "keyword": "bandung",
+        "algo": "relevansi",
+        "rank": 31,
+        "title": "Pasar Literasi: Berburu Buku Original Harga Miring di Bandung",
+        "url": "https://www.detik.com/jabar/berita/d-8350868/pasar-literasi-berburu-buku-original-harga-miring-di-bandung"
+      },
+      {
+        "id": "a0004",
+        "keyword": "bandung",
+        "algo": "latest",
+        "rank": 25,
+        "title": "Merasakan Sensasi Melambung Tinggi dengan Wahana Giant Swing di Bandung, Jawa Barat",
+        "url": "https://20.detik.com/spot-wisata/20260203-260203055/merasakan-sensasi-melambung-tinggi-dengan-wahana-giant-swing-di-bandung-jawa-barat"
+      },
+      {
+        "id": "a0005",
+        "keyword": "banjir",
+        "algo": "relevansi",
+        "rank": 26,
+        "title": "'Uji Nyali' Pengendara Hadapi Banjir Jalur Ciluluk-Cijapati",
+        "url": "https://www.detik.com/jabar/berita/d-8353914/uji-nyali-pengendara-hadapi-banjir-jalur-ciluluk-cijapati"
+      },
+      {
+        "id": "a0006",
+        "keyword": "banjir",
+        "algo": "latest",
+        "rank": 33,
+        "title": "Sapuan Banjir di Babakan Madang Bikin Mobil Jadi Speedboat",
+        "url": "https://news.detik.com/berita/d-8353848/sapuan-banjir-di-babakan-madang-bikin-mobil-jadi-speedboat"
+      },
+      {
+        "id": "a0007",
+        "keyword": "banjir aceh dan sumatera 2025 detikcom",
+        "algo": "relevansi",
+        "rank": 3,
+        "title": "ISPA dan Penyakit Kulit 'Hantui' Pengungsi Banjir Aceh-Sumatera",
+        "url": "https://health.detik.com/berita-detikhealth/d-8273076/ispa-dan-penyakit-kulit-hantui-pengungsi-banjir-aceh-sumatera"
+      },
+      {
+        "id": "a0008",
+        "keyword": "banjir aceh dan sumatera 2025 detikcom",
+        "algo": "latest",
+        "rank": 7,
+        "title": "Ekonomi RI 2026 Diramal Tak Setinggi Target Purbaya",
+        "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8295047/ekonomi-ri-2026-diramal-tak-setinggi-target-purbaya"
+      },
+      {
+        "id": "a0009",
+        "keyword": "banjir jakarta",
+        "algo": "relevansi",
+        "rank": 32,
+        "title": "Video JK soal Banjir Jakarta: Yang Kena Rakyat Kecil, Orang Menteng Tidak",
+        "url": "https://20.detik.com/detikupdate/20260208-260208017/video-jk-soal-banjir-jakarta-yang-kena-rakyat-kecil-orang-menteng-tidak"
+      },
+      {
+        "id": "a0010",
+        "keyword": "banjir jakarta",
+        "algo": "latest",
+        "rank": 32,
+        "title": "Harga Bapok di 3 Provinsi Terdampak Bencana Sumatera Stabil Jelang Ramadan",
+        "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8351522/harga-bapok-di-3-provinsi-terdampak-bencana-sumatera-stabil-jelang-ramadan"
+      },
+      {
+        "id": "a0011",
+        "keyword": "banjir jakarta hari ini",
+        "algo": "relevansi",
+        "rank": 5,
+        "title": "AHY Sebut 70% Masyarakat RI Bakal Tinggal-Kerja di Kota, Ini Tantangannya",
+        "url": "https://finance.detik.com/infrastruktur/d-8354316/ahy-sebut-70-masyarakat-ri-bakal-tinggal-kerja-di-kota-ini-tantangannya"
+      },
+      {
+        "id": "a0012",
+        "keyword": "banjir jakarta hari ini",
+        "algo": "latest",
+        "rank": 12,
+        "title": "Promono: Normalisasi Ciliwung Dimulai, Pembebasan Lahannya Hampir Selesai",
+        "url": "https://news.detik.com/berita/d-8346235/promono-normalisasi-ciliwung-dimulai-pembebasan-lahannya-hampir-selesai"
+      },
+      {
+        "id": "a0013",
+        "keyword": "bencana alam",
+        "algo": "relevansi",
+        "rank": 3,
+        "title": "Andre Rosiade Puji Gerak Cepat Pertamina Tangani Bencana Sumatera",
+        "url": "https://news.detik.com/berita/d-8352459/andre-rosiade-puji-gerak-cepat-pertamina-tangani-bencana-sumatera"
+      },
+      {
+        "id": "a0014",
+        "keyword": "bencana alam",
+        "algo": "latest",
+        "rank": 1,
+        "title": "Harga Sembako Jatim Hari Ini: Elpiji, Cabai Naik, Bawang Putih Turun",
+        "url": "https://www.detik.com/jatim/bisnis/d-8354016/harga-sembako-jatim-hari-ini-elpiji-cabai-naik-bawang-putih-turun"
+      },
+      {
+        "id": "a0015",
+        "keyword": "berita terkini",
+        "algo": "relevansi",
+        "rank": 5,
+        "title": "5 Berita Terpopuler Internasional Hari Ini",
+        "url": "https://news.detik.com/internasional/d-8351636/5-berita-terpopuler-internasional-hari-ini"
+      },
+      {
+        "id": "a0016",
+        "keyword": "berita terkini",
+        "algo": "latest",
+        "rank": 5,
+        "title": "Hilang Lima Hari, Nenek 87 Tahun Ditemukan Tewas di Kawasan Konservasi Batur",
+        "url": "https://www.detik.com/bali/berita/d-8354113/hilang-lima-hari-nenek-87-tahun-ditemukan-tewas-di-kawasan-konservasi-batur"
+      },
+      {
+        "id": "a0017",
+        "keyword": "debat capres program makan siang gratis prabowo",
+        "algo": "relevansi",
+        "rank": 3,
+        "title": "Prabowo-Gibran Dilantik, Warga: Semoga Program Makan Siang Gratis Terealisasi",
+        "url": "https://www.detik.com/jatim/berita/d-7597736/prabowo-gibran-dilantik-warga-semoga-program-makan-siang-gratis-terealisasi"
+      },
+      {
+        "id": "a0018",
+        "keyword": "debat capres program makan siang gratis prabowo",
+        "algo": "latest",
+        "rank": 5,
+        "title": "Gelar Tebus Murah Sembako, Barisan RFG Tebalkan Kemenangan 02 di Sultra",
+        "url": "https://news.detik.com/pemilu/d-7180202/gelar-tebus-murah-sembako-barisan-rfg-tebalkan-kemenangan-02-di-sultra"
+      },
+      {
+        "id": "a0019",
+        "keyword": "doa nisfu syaban",
+        "algo": "relevansi",
+        "rank": 6,
+        "title": "5 Doa Nisfu Syaban Lengkap: Arab, Latin dan Artinya",
+        "url": "https://www.detik.com/sumbagsel/berita/d-8331294/5-doa-nisfu-syaban-lengkap-arab-latin-dan-artinya"
+      },
+      {
+        "id": "a0020",
+        "keyword": "doa nisfu syaban",
+        "algo": "latest",
+        "rank": 7,
+        "title": "Jelang Ramadhan, Jamaah Gelar Doa dan Yasinan di Masjid Istiqlal",
+        "url": "https://www.detik.com/hikmah/foto/d-8338035/jelang-ramadhan-jamaah-gelar-doa-dan-yasinan-di-masjid-istiqlal"
+      },
+      {
+        "id": "a0021",
+        "keyword": "gas 3 kg",
+        "algo": "relevansi",
+        "rank": 10,
+        "title": "Segini Harga Pertalite-Gas 3 Kg Jika Tanpa Subsidi",
+        "url": "https://www.detik.com/kalimantan/bisnis/d-8137627/segini-harga-pertalite-gas-3-kg-jika-tanpa-subsidi"
+      },
+      {
+        "id": "a0022",
+        "keyword": "gas 3 kg",
+        "algo": "latest",
+        "rank": 11,
+        "title": "Pertamina Apresiasi Polisi Ungkap Kasus Pengoplos Gas Bersubsidi di Babel",
+        "url": "https://www.detik.com/sumbagsel/berita/d-8345545/pertamina-apresiasi-polisi-ungkap-kasus-pengoplos-gas-bersubsidi-di-babel"
+      },
+      {
+        "id": "a0023",
+        "keyword": "gempa hari ini",
+        "algo": "relevansi",
+        "rank": 4,
+        "title": "Video: Gempa M 6,3 Guncang Afghanistan Tewaskan 20 Orang",
+        "url": "https://20.detik.com/detikupdate/20251103-251103088/video-gempa-m-6-3-guncang-afghanistan-tewaskan-20-orang"
+      },
+      {
+        "id": "a0024",
+        "keyword": "gempa hari ini",
+        "algo": "latest",
+        "rank": 5,
+        "title": "Rumah Rusak Terdampak Gempa M 6,4 di Pacitan Mulai Diperbaiki",
+        "url": "https://www.detik.com/jatim/berita/d-8351787/rumah-rusak-terdampak-gempa-m-6-4-di-pacitan-mulai-diperbaiki"
+      },
+      {
+        "id": "a0025",
+        "keyword": "harga emas hari ini",
+        "algo": "relevansi",
+        "rank": 5,
+        "title": "Harga Emas Antam Surabaya Hari Ini Turun tapi Masih Rp 2,9 Jutaan",
+        "url": "https://www.detik.com/jatim/bisnis/d-8354005/harga-emas-antam-surabaya-hari-ini-turun-tapi-masih-rp-2-9-jutaan"
+      },
+      {
+        "id": "a0026",
+        "keyword": "harga emas hari ini",
+        "algo": "latest",
+        "rank": 12,
+        "title": "Harga Emas Antam Hari Ini Masih di Bawah Rp 3 Juta/Gram",
+        "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8352336/harga-emas-antam-hari-ini-masih-di-bawah-rp-3-juta-gram"
+      },
+      {
+        "id": "a0027",
+        "keyword": "harga kacang panjang 1 kg hari ini",
+        "algo": "relevansi",
+        "rank": 1,
+        "title": "Harga Sembako Jogja Hari Ini 13 Februari 2026: Cabai Rawit Merah Naik Lagi!",
+        "url": "https://www.detik.com/jogja/bisnis/d-8354389/harga-sembako-jogja-hari-ini-13-februari-2026-cabai-rawit-merah-naik-lagi"
+      },
+      {
+        "id": "a0028",
+        "keyword": "harga kacang panjang 1 kg hari ini",
+        "algo": "latest",
+        "rank": 6,
+        "title": "Kisah Ibu Rumah Tangga Bisnis Camilan Berawal dari Ketemu Resep dalam Panci",
+        "url": "https://finance.detik.com/solusiukm/d-6909197/kisah-ibu-rumah-tangga-bisnis-camilan-berawal-dari-ketemu-resep-dalam-panci"
+      },
+      {
+        "id": "a0029",
+        "keyword": "hasil sidang isbat puasa 2025",
+        "algo": "relevansi",
+        "rank": 4,
+        "title": "Apa Perbedaan Rukyat Hilal dan Hisab dalam Menentukan Awal Ramadan?",
+        "url": "https://www.detik.com/hikmah/khazanah/d-8353553/apa-perbedaan-rukyat-hilal-dan-hisab-dalam-menentukan-awal-ramadan"
+      },
+      {
+        "id": "a0030",
+        "keyword": "hasil sidang isbat puasa 2025",
+        "algo": "latest",
+        "rank": 9,
+        "title": "Awal Puasa Ramadan 2026 di Arab Saudi dan Indonesia, Apakah Sama?",
+        "url": "https://www.detik.com/hikmah/khazanah/d-8347840/awal-puasa-ramadan-2026-di-arab-saudi-dan-indonesia-apakah-sama"
+      },
+      {
+        "id": "a0031",
+        "keyword": "indonesia gelap",
+        "algo": "relevansi",
+        "rank": 15,
+        "title": "Video: Kala Prabowo Sindir Serakahnomics hingga Demo Dibayar Koruptor",
+        "url": "https://20.detik.com/detikupdate/20250721-250721010/video-kala-prabowo-sindir-serakahnomics-hingga-demo-dibayar-koruptor"
+      },
+      {
+        "id": "a0032",
+        "keyword": "indonesia gelap",
+        "algo": "latest",
+        "rank": 16,
+        "title": "8 Teks Khutbah Jumat Akhir Bulan Syaban dan Persiapan Menyambut Ramadan 2026",
+        "url": "https://www.detik.com/jateng/berita/d-8353462/8-teks-khutbah-jumat-akhir-bulan-syaban-dan-persiapan-menyambut-ramadan-2026"
+      },
+      {
+        "id": "a0033",
+        "keyword": "iran",
+        "algo": "relevansi",
+        "rank": 31,
+        "title": "Tegang! Pesawat Pengintai AS Terbang di Dekat Iran",
+        "url": "https://news.detik.com/internasional/d-8349289/tegang-pesawat-pengintai-as-terbang-di-dekat-iran"
+      },
+      {
+        "id": "a0034",
+        "keyword": "iran",
+        "algo": "latest",
+        "rank": 26,
+        "title": "Jalan Terjal Timnas Indonesia di Piala Asia U-17 2026",
+        "url": "https://sport.detik.com/sepakbola/sepakbola-indonesia/d-8353659/jalan-terjal-timnas-indonesia-di-piala-asia-u-17-2026"
+      },
+      {
+        "id": "a0035",
+        "keyword": "jadwal",
+        "algo": "relevansi",
+        "rank": 26,
+        "title": "Jadwal Olimpiade Musim Dingin Jumat 13 Februari 2026-Perolehan Medali Terbaru",
+        "url": "https://www.detik.com/sumbagsel/berita/d-8354066/jadwal-olimpiade-musim-dingin-jumat-13-februari-2026-perolehan-medali-terbaru"
+      },
+      {
+        "id": "a0036",
+        "keyword": "jadwal",
+        "algo": "latest",
+        "rank": 33,
+        "title": "8 Hal yang Harus Diketahui Pendaftar KIP Kuliah Jalur SNBP 2026, Catat!",
+        "url": "https://www.detik.com/edu/beasiswa/d-8354049/8-hal-yang-harus-diketahui-pendaftar-kip-kuliah-jalur-snbp-2026-catat"
+      },
+      {
+        "id": "a0037",
+        "keyword": "jokowi",
+        "algo": "relevansi",
+        "rank": 25,
+        "title": "Video Eks Wakapolri Oegroseno: Laporan Jokowi Menyalahi Asas Legalitas KUHP",
+        "url": "https://20.detik.com/detikupdate/20260212-260212069/video-eks-wakapolri-oegroseno-laporan-jokowi-menyalahi-asas-legalitas-kuhp"
+      },
+      {
+        "id": "a0038",
+        "keyword": "jokowi",
+        "algo": "latest",
+        "rank": 30,
+        "title": "Bahlil Minta Inpex Mulai Produksi Blok Masela Sebelum Pilpres",
+        "url": "https://finance.detik.com/energi/d-8353074/bahlil-minta-inpex-mulai-produksi-blok-masela-sebelum-pilpres"
+      },
+      {
+        "id": "a0039",
+        "keyword": "judi online",
+        "algo": "relevansi",
+        "rank": 2,
+        "title": "Kala Sopir Taksi Online Pergoki Penumpang Mesum di Jok Belakang",
+        "url": "https://www.detik.com/jogja/berita/d-8354034/kala-sopir-taksi-online-pergoki-penumpang-mesum-di-jok-belakang"
+      },
+      {
+        "id": "a0040",
+        "keyword": "judi online",
+        "algo": "latest",
+        "rank": 25,
+        "title": "Video PPATK Ungkap RI Mampu Tekan Transaksi Judol di 2025 Kurang dari Rp 300 T",
+        "url": "https://20.detik.com/detikupdate/20260203-260203133/video-ppatk-ungkap-ri-mampu-tekan-transaksi-judol-di-2025-kurang-dari-rp-300-t"
+      },
+      {
+        "id": "a0041",
+        "keyword": "kasus penyelundupan sabu ke lapas narkotika cipinang",
+        "algo": "relevansi",
+        "rank": 8,
+        "title": "Jaringan Narkoba Dibongkar Usai Istri Selundupkan Sabu ke Lapas Mojokerto",
+        "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8285573/jaringan-narkoba-dibongkar-usai-istri-selundupkan-sabu-ke-lapas-mojokerto"
+      },
+      {
+        "id": "a0042",
+        "keyword": "kasus penyelundupan sabu ke lapas narkotika cipinang",
+        "algo": "latest",
+        "rank": 9,
+        "title": "Cerita Freddy Budiman Atur Bisnis Narkoba dan Nyabu Bareng Model di Lapas",
+        "url": "https://news.detik.com/berita/d-3264060/cerita-freddy-budiman-atur-bisnis-narkoba-dan-nyabu-bareng-model-di-lapas"
+      },
+      {
+        "id": "a0043",
+        "keyword": "kasus politik di bulan juni 2024",
+        "algo": "relevansi",
+        "rank": 6,
+        "title": "Konektivitas Jadi Salah Satu Kunci Pariwisata Indonesia Dikenal Luas",
+        "url": "https://travel.detik.com/travel-news/d-8352059/konektivitas-jadi-salah-satu-kunci-pariwisata-indonesia-dikenal-luas"
+      },
+      {
+        "id": "a0044",
+        "keyword": "kasus politik di bulan juni 2024",
+        "algo": "latest",
+        "rank": 6,
+        "title": "Profil dan Biodata Habib Rizieq Shihab",
+        "url": "https://www.detik.com/kalimantan/berita/d-8116868/profil-dan-biodata-habib-rizieq-shihab"
+      },
+      {
+        "id": "a0045",
+        "keyword": "kebakaran los angeles",
+        "algo": "relevansi",
+        "rank": 12,
+        "title": "Heboh Masjid Tetap Utuh Usai Kebakaran Los Angeles, Ternyata...",
+        "url": "https://www.detik.com/jateng/berita/d-7734038/heboh-masjid-tetap-utuh-usai-kebakaran-los-angeles-ternyata"
+      },
+      {
+        "id": "a0046",
+        "keyword": "kebakaran los angeles",
+        "algo": "latest",
+        "rank": 17,
+        "title": "2025 Jadi Tahun Terpanas Ketiga yang Pernah Tercatat",
+        "url": "https://news.detik.com/dw/d-8307408/2025-jadi-tahun-terpanas-ketiga-yang-pernah-tercatat"
+      },
+      {
+        "id": "a0047",
+        "keyword": "kecelakaan",
+        "algo": "relevansi",
+        "rank": 33,
+        "title": "Pramono Berduka Pelajar Tewas Kecelakaan di Matraman karena Jalan Berlubang",
+        "url": "https://news.detik.com/berita/d-8347968/pramono-berduka-pelajar-tewas-kecelakaan-di-matraman-karena-jalan-berlubang"
+      },
+      {
+        "id": "a0048",
+        "keyword": "kecelakaan",
+        "algo": "latest",
+        "rank": 32,
+        "title": "Warga Boyolali Dilarikan ke Puskesmas Setelah Digigit Anakan Kobra",
+        "url": "https://www.detik.com/jateng/berita/d-8353728/warga-boyolali-dilarikan-ke-puskesmas-setelah-digigit-anakan-kobra"
+      },
+      {
+        "id": "a0049",
+        "keyword": "kekerasan perempuan dan anak",
+        "algo": "relevansi",
+        "rank": 4,
+        "title": "Video Kombes Rita Wulandari Raih Awards Kategori Polisi PPA Kelompok Rentan",
+        "url": "https://20.detik.com/detikupdate/20250716-250716130/video-kombes-rita-wulandari-raih-awards-kategori-polisi-ppa-kelompok-rentan"
+      },
+      {
+        "id": "a0050",
+        "keyword": "kekerasan perempuan dan anak",
+        "algo": "latest",
+        "rank": 3,
+        "title": "Polisi Dalami Dugaan Pelecehan Fisik oleh Gus Idris",
+        "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-8353176/polisi-dalami-dugaan-pelecehan-fisik-oleh-gus-idris"
+      },
+      {
+        "id": "a0051",
+        "keyword": "kekosongan gula di tahun 2015",
+        "algo": "relevansi",
+        "rank": 3,
+        "title": "Kubu Tom Lembong Dukung Terdakwa Lain di Kasus Gula Dibebaskan",
+        "url": "https://news.detik.com/berita/d-8109066/kubu-tom-lembong-dukung-terdakwa-lain-di-kasus-gula-dibebaskan"
+      },
+      {
+        "id": "a0052",
+        "keyword": "kekosongan gula di tahun 2015",
+        "algo": "latest",
+        "rank": 1,
+        "title": "100 Contoh Soal UTBK-SNBT 2023 Lengkap Kunci Jawaban dan Pembahasan",
+        "url": "https://www.detik.com/sulsel/berita/d-6730811/100-contoh-soal-utbk-snbt-2023-lengkap-kunci-jawaban-dan-pembahasan"
+      },
+      {
+        "id": "a0053",
+        "keyword": "keracunan makan bergizi gratis",
+        "algo": "relevansi",
+        "rank": 28,
+        "title": "Marak Keracunan Makan Bergizi Gratis, Prabowo Segera Panggil Kepala BGN",
+        "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8133352/marak-keracunan-makan-bergizi-gratis-prabowo-segera-panggil-kepala-bgn"
+      },
+      {
+        "id": "a0054",
+        "keyword": "keracunan makan bergizi gratis",
+        "algo": "latest",
+        "rank": 27,
+        "title": "Dinkes Sumut Uji Sampel Bahan MBG yang Diduga Bikin Murid Keracunan di Dairi",
+        "url": "https://www.detik.com/sumut/berita/d-8351956/dinkes-sumut-uji-sampel-bahan-mbg-yang-diduga-bikin-murid-keracunan-di-dairi"
+      },
+      {
+        "id": "a0055",
+        "keyword": "keracunan program makan bergizi gratis",
+        "algo": "relevansi",
+        "rank": 4,
+        "title": "Prabowo Dapat Laporan Kepala Daerah Angka Kemiskinan-Pengangguran Turun",
+        "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8354621/prabowo-dapat-laporan-kepala-daerah-angka-kemiskinan-pengangguran-turun"
+      },
+      {
+        "id": "a0056",
+        "keyword": "keracunan program makan bergizi gratis",
+        "algo": "latest",
+        "rank": 2,
+        "title": "Purbaya Sebut MBG Fondasi Pertumbuhan Ekonomi: Jangan Kebanyakan Protes!",
+        "url": "https://www.detik.com/kalimantan/berita/d-8352746/purbaya-sebut-mbg-fondasi-pertumbuhan-ekonomi-jangan-kebanyakan-protes"
+      },
+      {
+        "id": "a0057",
+        "keyword": "kisah nabi muhammad saw membangun kota madinah",
+        "algo": "relevansi",
+        "rank": 2,
+        "title": "Siapa Ahli Ibadah yang Bangkrut di Akhirat?",
+        "url": "https://www.detik.com/hikmah/kisah/d-8353489/siapa-ahli-ibadah-yang-bangkrut-di-akhirat"
+      },
+      {
+        "id": "a0058",
+        "keyword": "kisah nabi muhammad saw membangun kota madinah",
+        "algo": "latest",
+        "rank": 4,
+        "title": "Contoh Khutbat Jumat Isra Miraj 2026 Penuh Hikmah dan Perjalanan Spiritual",
+        "url": "https://www.detik.com/sumbagsel/berita/d-8305327/contoh-khutbat-jumat-isra-miraj-2026-penuh-hikmah-dan-perjalanan-spiritual"
+      },
+      {
+        "id": "a0059",
+        "keyword": "klasemen",
+        "algo": "relevansi",
+        "rank": 1,
+        "title": "Man City Pepet Arsenal di Puncak Klasemen",
+        "url": "https://www.detik.com/sumut/sepakbola/d-8354175/man-city-pepet-arsenal-di-puncak-klasemen"
+      },
+      {
+        "id": "a0060",
+        "keyword": "klasemen",
+        "algo": "latest",
+        "rank": 11,
+        "title": "Video: Liverpool-Arsenal Kompak Imbang, Chelsea Menang",
+        "url": "https://20.detik.com/detikupdate/20260118-260118007/video-liverpool-arsenal-kompak-imbang-chelsea-menang"
+      },
+      {
+        "id": "a0061",
+        "keyword": "klasemen liga inggris",
+        "algo": "relevansi",
+        "rank": 8,
+        "title": "Meme Ragam Reaksi Kocak Arsenal saat Pantau Hasil Liverpool Vs Man City",
+        "url": "https://sport.detik.com/sepakbola/foto-sepakbola/d-8348238/meme-ragam-reaksi-kocak-arsenal-saat-pantau-hasil-liverpool-vs-man-city"
+      },
+      {
+        "id": "a0062",
+        "keyword": "klasemen liga inggris",
+        "algo": "latest",
+        "rank": 12,
+        "title": "Arne Slot ke Liverpool: Terima Saja kalau Setiap Laga Wajib Menang",
+        "url": "https://sport.detik.com/sepakbola/liga-inggris/d-8352821/arne-slot-ke-liverpool-terima-saja-kalau-setiap-laga-wajib-menang"
+      },
+      {
+        "id": "a0063",
+        "keyword": "klasemen liga spanyol",
+        "algo": "relevansi",
+        "rank": 12,
+        "title": "Klasemen Liga Spanyol Usai Real Madrid Akhirnya Menang Lagi",
+        "url": "https://sport.detik.com/sepakbola/liga-spanyol/d-8259883/klasemen-liga-spanyol-usai-real-madrid-akhirnya-menang-lagi"
+      },
+      {
+        "id": "a0064",
+        "keyword": "klasemen liga spanyol",
+        "algo": "latest",
+        "rank": 9,
+        "title": "7 Laga Menang Beruntun, Madrid Belum Puas!",
+        "url": "https://sport.detik.com/sepakbola/liga-spanyol/d-8347720/7-laga-menang-beruntun-madrid-belum-puas"
+      },
+      {
+        "id": "a0065",
+        "keyword": "kondisi pilot susi air pada penyanderaan",
+        "algo": "relevansi",
+        "rank": 1,
+        "title": "KKB Penembak Pesawat Smart Air Diduga Pelaku yang Sama Gagalkan Kunker Wapres",
+        "url": "https://www.detik.com/sulsel/hukum-dan-kriminal/d-8354534/kkb-penembak-pesawat-smart-air-diduga-pelaku-yang-sama-gagalkan-kunker-wapres"
+      },
+      {
+        "id": "a0066",
+        "keyword": "kondisi pilot susi air pada penyanderaan",
+        "algo": "latest",
+        "rank": 1,
+        "title": "Kapolri Ungkap Pembebasan Pilot Susi Air Tingkatkan Kepercayaan Internasional",
+        "url": "https://www.detik.com/sulsel/berita/d-7638287/kapolri-ungkap-pembebasan-pilot-susi-air-tingkatkan-kepercayaan-internasional"
+      },
+      {
+        "id": "a0067",
+        "keyword": "lula lahfah",
+        "algo": "relevansi",
+        "rank": 30,
+        "title": "Polisi Tetap Usut Asal-usul Whip Pink Meski Kasus Kematian Lula Lahfah Disetop",
+        "url": "https://news.detik.com/berita/d-8336055/polisi-tetap-usut-asal-usul-whip-pink-meski-kasus-kematian-lula-lahfah-disetop"
+      },
+      {
+        "id": "a0068",
+        "keyword": "lula lahfah",
+        "algo": "latest",
+        "rank": 23,
+        "title": "Video Top 5: Penyelidikan Kematian Lula Disetop hingga Onad Selesai Rehab",
+        "url": "https://20.detik.com/detikupdate/20260201-260201006/video-top-5-penyelidikan-kematian-lula-disetop-hingga-onad-selesai-rehab"
+      },
+      {
+        "id": "a0069",
+        "keyword": "makan bergizi gratis",
+        "algo": "relevansi",
+        "rank": 29,
+        "title": "Korban Keracunan Bergelimpangan, Air Infus Bergelantungan",
+        "url": "https://www.detik.com/kalimantan/foto/d-8342966/korban-keracunan-bergelimpangan-air-infus-bergelantungan"
+      },
+      {
+        "id": "a0070",
+        "keyword": "makan bergizi gratis",
+        "algo": "latest",
+        "rank": 3,
+        "title": "Prabowo Akan Beri Bintang Mahaputera ke Kapolri: Kebahagiaan Bapak ke Anaknya",
+        "url": "https://news.detik.com/berita/d-8354237/prabowo-akan-beri-bintang-mahaputera-ke-kapolri-kebahagiaan-bapak-ke-anaknya"
+      },
+      {
+        "id": "a0071",
+        "keyword": "mbg",
+        "algo": "relevansi",
+        "rank": 26,
+        "title": "Prabowo Ungkap MBG RI Setara Beri Makan Warga Singapura 10 Kali Tiap Hari",
+        "url": "https://news.detik.com/berita/d-8354083/prabowo-ungkap-mbg-ri-setara-beri-makan-warga-singapura-10-kali-tiap-hari"
+      },
+      {
+        "id": "a0072",
+        "keyword": "mbg",
+        "algo": "latest",
+        "rank": 31,
+        "title": "Prabowo Ungkap MBG RI Setara Beri Makan Warga Singapura 10 Kali Tiap Hari",
+        "url": "https://news.detik.com/berita/d-8354083/prabowo-ungkap-mbg-ri-setara-beri-makan-warga-singapura-10-kali-tiap-hari"
+      },
+      {
+        "id": "a0073",
+        "keyword": "netralitas asn dalam pemilu 2024",
+        "algo": "relevansi",
+        "rank": 4,
+        "title": "KASN Dihapus, MK Perintahkan Pemerintah Bentuk Lembaga Independen Awasi ASN",
+        "url": "https://news.detik.com/berita/d-8163622/kasn-dihapus-mk-perintahkan-pemerintah-bentuk-lembaga-independen-awasi-asn"
+      },
+      {
+        "id": "a0074",
+        "keyword": "netralitas asn dalam pemilu 2024",
+        "algo": "latest",
+        "rank": 5,
+        "title": "Tiga ASN di Lombok Barat Dipecat Gegara Berpolitik hingga Pencabulan",
+        "url": "https://www.detik.com/bali/nusra/d-8023409/tiga-asn-di-lombok-barat-dipecat-gegara-berpolitik-hingga-pencabulan"
+      },
+      {
+        "id": "a0075",
+        "keyword": "pagar laut",
+        "algo": "relevansi",
+        "rank": 2,
+        "title": "Johnny Depp Sulap Rumahnya Jadi Dunia Jack Sparrow, Ada Gua Bajak Laut",
+        "url": "https://www.detik.com/properti/berita/d-8354309/johnny-depp-sulap-rumahnya-jadi-dunia-jack-sparrow-ada-gua-bajak-laut"
+      },
+      {
+        "id": "a0076",
+        "keyword": "pagar laut",
+        "algo": "latest",
+        "rank": 7,
+        "title": "Bebas-Aktif 2.0: Membaca Traktat Keamanan Baru Jakarta-Canberra",
+        "url": "https://news.detik.com/kolom/d-8343707/bebas-aktif-2-0-membaca-traktat-keamanan-baru-jakarta-canberra"
+      },
+      {
+        "id": "a0077",
+        "keyword": "paparan radiasi dari alat listrik di rumah",
+        "algo": "relevansi",
+        "rank": 2,
+        "title": "Mengenal Collagen Tripeptide dan Manfaatnya untuk Kecantikan Kulit",
+        "url": "https://health.detik.com/berita-detikhealth/d-8352990/mengenal-collagen-tripeptide-dan-manfaatnya-untuk-kecantikan-kulit"
+      },
+      {
+        "id": "a0078",
+        "keyword": "paparan radiasi dari alat listrik di rumah",
+        "algo": "latest",
+        "rank": 7,
+        "title": "7 Cara Merawat Remote Keyless Motor",
+        "url": "https://oto.detik.com/tips-and-tricks-motor/d-5757108/7-cara-merawat-remote-keyless-motor"
+      },
+      {
+        "id": "a0079",
+        "keyword": "pembebasan lahan jalan tol",
+        "algo": "relevansi",
+        "rank": 7,
+        "title": "Foto Udara Proyek Jalan Tol Jambi-Sumsel yang Ditargetkan Kelar Tahun Depan",
+        "url": "https://finance.detik.com/foto-bisnis/d-6820843/foto-udara-proyek-jalan-tol-jambi-sumsel-yang-ditargetkan-kelar-tahun-depan"
+      },
+      {
+        "id": "a0080",
+        "keyword": "pembebasan lahan jalan tol",
+        "algo": "latest",
+        "rank": 2,
+        "title": "Tinjau Tol Kapalbetung dengan AHY, Ratu Dewa: Optimis Dongkrak Ekonomi",
+        "url": "https://www.detik.com/sumbagsel/berita/d-8351457/tinjau-tol-kapalbetung-dengan-ahy-ratu-dewa-optimis-dongkrak-ekonomi"
+      },
+      {
+        "id": "a0081",
+        "keyword": "penanganan banjir dan longsor sumatera",
+        "algo": "relevansi",
+        "rank": 9,
+        "title": "Pakar IPB Jelaskan soal Kayu Gelondongan Hanyut di Longsor dan Banjir Sumatera",
+        "url": "https://travel.detik.com/travel-news/d-8242987/pakar-ipb-jelaskan-soal-kayu-gelondongan-hanyut-di-longsor-dan-banjir-sumatera"
+      },
+      {
+        "id": "a0082",
+        "keyword": "penanganan banjir dan longsor sumatera",
+        "algo": "latest",
+        "rank": 9,
+        "title": "Tanggul Darurat Dibangun, Tol Tangerang-Merak Km 50 Bisa Dilewati",
+        "url": "https://finance.detik.com/infrastruktur/d-8339408/tanggul-darurat-dibangun-tol-tangerang-merak-km-50-bisa-dilewati"
+      },
+      {
+        "id": "a0083",
+        "keyword": "pengroyokan remaja di semarang tahun 2022",
+        "algo": "relevansi",
+        "rank": 1,
+        "title": "Fakta-fakta ABG Gunungkidul Buntuti-Nyaris Perkosa Nenek di Hutan",
+        "url": "https://www.detik.com/jogja/berita/d-8353723/fakta-fakta-abg-gunungkidul-buntuti-nyaris-perkosa-nenek-di-hutan"
+      },
+      {
+        "id": "a0084",
+        "keyword": "polda metro jaya",
+        "algo": "relevansi",
+        "rank": 26,
+        "title": "Jokowi Diperiksa Polda Metro Jaya di Solo Terkait Laporannya",
+        "url": "https://www.detik.com/jateng/berita/d-8351948/jokowi-diperiksa-polda-metro-jaya-di-solo-terkait-laporannya"
+      },
+      {
+        "id": "a0085",
+        "keyword": "polda metro jaya",
+        "algo": "latest",
+        "rank": 1,
+        "title": "Video: Prabowo Didampingi Kapolri Hadiri Groundbreaking SPPG Polri",
+        "url": "https://20.detik.com/detikupdate/20260213-260213018/video-prabowo-didampingi-kapolri-hadiri-groundbreaking-sppg-polri"
+      },
+      {
+        "id": "a0086",
+        "keyword": "politik pada bulan april 2024",
+        "algo": "relevansi",
+        "rank": 7,
+        "title": "Megawati Terima Doktor HC di Riyadh Besok, Ini 13 Gelar Kehormatan Sebelumnya",
+        "url": "https://news.detik.com/berita/d-8346864/megawati-terima-doktor-hc-di-riyadh-besok-ini-13-gelar-kehormatan-sebelumnya"
+      },
+      {
+        "id": "a0087",
+        "keyword": "politik pada bulan april 2024",
+        "algo": "latest",
+        "rank": 3,
+        "title": "Kata Menteri PANRB soal Persiapan ASN Pindah ke IKN",
+        "url": "https://www.detik.com/kalimantan/ikn/d-8315283/kata-menteri-panrb-soal-persiapan-asn-pindah-ke-ikn"
+      },
+      {
+        "id": "a0088",
+        "keyword": "polwan di mojokerto bakar suami hingga tewas",
+        "algo": "relevansi",
+        "rank": 6,
+        "title": "Kesaksian Meringankan Terdakwa di Kasus Polwan Bakar Suami di Mojokerto",
+        "url": "https://www.detik.com/jatim/hukum-dan-kriminal/d-7635378/kesaksian-meringankan-terdakwa-di-kasus-polwan-bakar-suami-di-mojokerto"
+      },
+      {
+        "id": "a0089",
+        "keyword": "polwan di mojokerto bakar suami hingga tewas",
+        "algo": "latest",
+        "rank": 8,
+        "title": "Polwan Bakar Suami di Mojokerto Dijerat Pasal KDRT",
+        "url": "https://www.detik.com/bali/hukum-dan-kriminal/d-7383699/polwan-bakar-suami-di-mojokerto-dijerat-pasal-kdrt"
+      },
+      {
+        "id": "a0090",
+        "keyword": "prabowo",
+        "algo": "relevansi",
+        "rank": 3,
+        "title": "Prioritaskan Standarisasi Mutu, Kapolri Pastikan Zero Accident di SPPG Polri",
+        "url": "https://news.detik.com/berita/d-8354063/prioritaskan-standarisasi-mutu-kapolri-pastikan-zero-accident-di-sppg-polri"
+      },
+      {
+        "id": "a0091",
+        "keyword": "prabowo",
+        "algo": "latest",
+        "rank": 27,
+        "title": "Luhut: Pertumbuhan Ekonomi 5-6% Bukan Prestasi",
+        "url": "https://finance.detik.com/berita-ekonomi-bisnis/d-8354167/luhut-pertumbuhan-ekonomi-5-6-bukan-prestasi"
+      },
+      {
+        "id": "a0092",
+        "keyword": "sepak bola",
+        "algo": "relevansi",
+        "rank": 32,
+        "title": "Infografis: Trik Kontrol dan Passing Efektif untuk Sepak Bola Sarung",
+        "url": "https://health.detik.com/infografis/d-8064801/infografis-trik-kontrol-dan-passing-efektif-untuk-sepak-bola-sarung"
+      },
+      {
+        "id": "a0093",
+        "keyword": "sepak bola",
+        "algo": "latest",
+        "rank": 26,
+        "title": "Profil Abah Guru Zuhdiannor, Ulama Humanis dari Tanah Banjar",
+        "url": "https://www.detik.com/kalimantan/budaya/d-8353744/profil-abah-guru-zuhdiannor-ulama-humanis-dari-tanah-banjar"
+      },
+      {
+        "id": "a0094",
+        "keyword": "sidang isbat puasa 2025",
+        "algo": "relevansi",
+        "rank": 3,
+        "title": "Puasa 2026 Pemerintah Tanggal Berapa? Ini Jadwal Sidang Isbat",
+        "url": "https://news.detik.com/berita/d-8349518/puasa-2026-pemerintah-tanggal-berapa-ini-jadwal-sidang-isbat"
+      },
+      {
+        "id": "a0095",
+        "keyword": "sidang isbat puasa 2025",
+        "algo": "latest",
+        "rank": 6,
+        "title": "Puasa Muhammadiyah 2026 Mulai Kapan? Cek Jadwal dan Prediksi Lebaran di Sini!",
+        "url": "https://www.detik.com/sulsel/berita/d-8348258/puasa-muhammadiyah-2026-mulai-kapan-cek-jadwal-dan-prediksi-lebaran-di-sini"
+      },
+      {
+        "id": "a0096",
+        "keyword": "sumber faktor penyumbang jejak karbon",
+        "algo": "relevansi",
+        "rank": 2,
+        "title": "Hutan dan Laut dalam Rantai Biomassa, Siapa yang Diuntungkan?",
+        "url": "https://www.detik.com/jabar/berita/d-8347519/hutan-dan-laut-dalam-rantai-biomassa-siapa-yang-diuntungkan"
+      },
+      {
+        "id": "a0097",
+        "keyword": "sumber faktor penyumbang jejak karbon",
+        "algo": "latest",
+        "rank": 3,
+        "title": "Pengertian Jejak Karbon Beserta Penyebab dan Contohnya",
+        "url": "https://www.detik.com/jateng/berita/d-7558218/pengertian-jejak-karbon-beserta-penyebab-dan-contohnya"
+      },
+      {
+        "id": "a0098",
+        "keyword": "trump",
+        "algo": "relevansi",
+        "rank": 26,
+        "title": "Trump Ngotot Lanjutkan Negosiasi AS dengan Iran, Netanyahu Ragu Berhasil",
+        "url": "https://news.detik.com/internasional/d-8353785/trump-ngotot-lanjutkan-negosiasi-as-dengan-iran-netanyahu-ragu-berhasil"
+      },
+      {
+        "id": "a0099",
+        "keyword": "trump",
+        "algo": "latest",
+        "rank": 33,
+        "title": "Minat Warga Eropa ke AS Turun, Kini Pilih ke UEA dan Asia",
+        "url": "https://travel.detik.com/travel-news/d-8353834/minat-warga-eropa-ke-as-turun-kini-pilih-ke-uea-dan-asia"
+      }
+    ];
+
+    // ═══════════════════════════════════════════════════════════════════
+    // APP STATE
+    // ═══════════════════════════════════════════════════════════════════
+    let raterName = '';
+    // Hardcoded Apps Script URL
+    let sheetsUrl = 'https://script.google.com/macros/s/AKfycbz7hzM8-Pa0oNTYn6_jwtMb0Ohd6yWVSzPRFAwGuEkk3Y1HZe_oGCQu-x70Zyvd5ruS/exec';
+    let ratings = {};       // { articleId: { score, note, timestamp, synced } }
+    let keywords = [];
     let currentKwIdx = 0;
     let syncQueue = new Set(); // article IDs pending sync
     let isSyncing = false;
